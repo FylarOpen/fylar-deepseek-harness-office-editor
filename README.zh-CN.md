@@ -34,14 +34,14 @@
 
 ```bash
 dsh plugin --profile web add \
-  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+  github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
 如果你从 DSH 源码仓库运行，则在 DSH 源码根目录执行：
 
 ```bash
 pnpm dsh plugin --profile web add \
-  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+  github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
 需要锁定某个精确修订时，可以把 `v0.1.0` 换成完整 commit SHA。仓库已经包含验证过的 `lib/` 构建产物和 SDK runtime，普通用户不需要克隆或构建插件。
@@ -127,7 +127,7 @@ Word 和 Excel 格式在以下条件全部满足时可以导出 PDF：
 ```bash
 dsh plugin --profile web remove dsh-fylar-office-editor
 dsh plugin --profile web add \
-  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+  github:FylarOpen/fylar-office-editor#v0.1.0
 dsh web
 ```
 

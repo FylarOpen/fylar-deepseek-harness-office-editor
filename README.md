@@ -34,14 +34,14 @@ Stop the currently running DSH process, then install a tagged release:
 
 ```bash
 dsh plugin --profile web add \
-  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+  github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
 If you run DSH from its source repository, use the repository script instead:
 
 ```bash
 pnpm dsh plugin --profile web add \
-  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+  github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
 You can replace `v0.1.0` with a full commit SHA when you need to pin an exact revision. The repository includes its verified `lib/` output and SDK runtime, so users do not need to clone or build the plugin.
@@ -127,7 +127,7 @@ To replace an existing installation, stop DSH, remove the current plugin row, in
 ```bash
 dsh plugin --profile web remove dsh-fylar-office-editor
 dsh plugin --profile web add \
-  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+  github:FylarOpen/fylar-office-editor#v0.1.0
 dsh web
 ```
 
