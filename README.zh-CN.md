@@ -30,21 +30,21 @@
 
 ### 1. 从 GitHub 安装
 
-先停止正在运行的 DSH，再安装指定版本：
+先停止正在运行的 DSH，再安装插件仓库：
 
 ```bash
 npx @deepseek-ai/dsh plugin --profile web add \
-  github:FylarOpen/fylar-office-editor#v0.1.1
+  github:FylarOpen/fylar-office-editor
 ```
 
 如果从 DSH 源码仓库运行，则在 DSH 源码根目录执行：
 
 ```bash
 pnpm dsh plugin --profile web add \
-  github:FylarOpen/fylar-office-editor#v0.1.1
+  github:FylarOpen/fylar-office-editor
 ```
 
-需要锁定某个精确修订时，可以把 `v0.1.0` 换成完整 commit SHA。仓库已经包含验证过的 `lib/` 构建产物和 SDK runtime，普通用户不需要克隆或构建插件。
+仓库已经包含验证过的 `lib/` 构建产物和 SDK runtime，普通用户不需要克隆或构建插件。
 
 ### 2. 重启 DSH
 
@@ -119,12 +119,12 @@ Word 和 Excel 格式在以下条件全部满足时可以导出 PDF：
 
 ## 升级与卸载
 
-替换已安装版本时，先停止 DSH，移除当前插件，再安装新 tag 并重启：
+替换已安装版本时，先停止 DSH，移除当前插件，再安装仓库当前版本并重启：
 
 ```bash
 npx @deepseek-ai/dsh plugin --profile web remove dsh-fylar-office-editor
 npx @deepseek-ai/dsh plugin --profile web add \
-  github:FylarOpen/fylar-office-editor#v0.1.1
+  github:FylarOpen/fylar-office-editor
 npx @deepseek-ai/dsh web
 ```
 

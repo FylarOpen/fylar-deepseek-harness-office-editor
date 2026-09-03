@@ -30,21 +30,21 @@ The plugin can create a real DOCX file from the agent's Markdown response. It ca
 
 ### 1. Install from GitHub
 
-Stop the currently running DSH process, then install a tagged release:
+Stop the currently running DSH process, then install the plugin repository:
 
 ```bash
 npx @deepseek-ai/dsh plugin --profile web add \
-  github:FylarOpen/fylar-office-editor#v0.1.1
+  github:FylarOpen/fylar-office-editor
 ```
 
 If running DSH from its source repository, use the repository script instead:
 
 ```bash
 pnpm dsh plugin --profile web add \
-  github:FylarOpen/fylar-office-editor#v0.1.1
+  github:FylarOpen/fylar-office-editor
 ```
 
-You can replace `v0.1.0` with a full commit SHA when you need to pin an exact revision. The repository includes its verified `lib/` output and SDK runtime, so users do not need to clone or build the plugin.
+The repository includes its verified `lib/` output and SDK runtime, so users do not need to clone or build the plugin.
 
 ### 2. Restart DSH
 
@@ -119,12 +119,12 @@ When the environment does not qualify, the PDF action is disabled and the plugin
 
 ## Upgrade and uninstall
 
-To replace an existing installation, stop DSH, remove the current plugin row, install the new tag, and restart:
+To replace an existing installation, stop DSH, remove the current plugin row, install the current repository version, and restart:
 
 ```bash
 npx @deepseek-ai/dsh plugin --profile web remove dsh-fylar-office-editor
 npx @deepseek-ai/dsh plugin --profile web add \
-  github:FylarOpen/fylar-office-editor#v0.1.1
+  github:FylarOpen/fylar-office-editor
 npx @deepseek-ai/dsh web
 ```
 
