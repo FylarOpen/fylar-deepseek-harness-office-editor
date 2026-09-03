@@ -29,11 +29,12 @@ describe('Office client registration', () => {
       inject: vi.fn((_name: string, register: () => void) => { register() }),
     }
     const locale = { register: vi.fn(() => () => undefined) }
+    const conversationRegister = vi.fn(() => () => undefined)
     const ctx = {
       slots,
       locale,
       layout: { openDetails: vi.fn(), closeDetails: vi.fn(), toggleSidebar: vi.fn() },
-      uiConversation: { events: { register: vi.fn() } },
+      conversationEvents: { register: conversationRegister },
       effect: vi.fn((setup: () => void | (() => void)) => {
         const cleanup = setup()
         if (typeof cleanup === 'function') cleanups.push(cleanup)
@@ -43,6 +44,8 @@ describe('Office client registration', () => {
     apply(ctx as never)
 
     expect(inject).toContain('locale')
+    expect(inject).not.toContain('uiConversation')
+    expect(inject).toContain('conversationEvents')
     expect(locale.register).toHaveBeenCalledWith(OFFICE_LOCALE_NS, { zh, en })
     const officeView = registrations.find(item => item.name === 'conversation.view')
     expect(officeView).toMatchObject({ id: 'office', order: 5, label: 'Office', locale: OFFICE_LOCALE_NS })
@@ -55,7 +58,7 @@ describe('Office client registration', () => {
     expect(viewInjected.hooks.workspace).toBe(deliveryInjected.hooks.workspace)
     expect(deliveryInjected.preload).toBeUndefined()
     expect(deliveryInjected.open).toBeUndefined()
-    expect(ctx.uiConversation.events.register).toHaveBeenCalledOnce()
+    expect(conversationRegister).toHaveBeenCalledOnce()
     expect(registrations.filter(item => item.name === 'tool.call.toolview').map(item => item.key)).toEqual([
       'office_create_docx',
       'office_present_file',
@@ -67,4 +70,5 @@ describe('Office client registration', () => {
     for (const cleanup of cleanups.reverse()) cleanup()
     await Promise.resolve()
   })
+
 })

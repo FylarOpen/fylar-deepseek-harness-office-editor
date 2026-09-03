@@ -22,7 +22,7 @@
 
 ### 环境要求
 
-- DeepSeek Harness `0.1.2-alpha.2`，对应 commit `0a53fb55bea101816fa226bb964ae2bed71c343b`。
+- 使用 npm `latest` 渠道的 DeepSeek Harness。本版本的开发依赖精确固定为 `0.1.1-rc.2`；alpha 版本单独用于评估后续改动，不属于正式支持的用户环境。
 - Node.js `^22.19.0 || >=24.0.0`。
 - DSH Web profile。
 - 浏览器支持 Worker、SharedWorker、WebAssembly、IndexedDB、Blob 和 ArrayBuffer。
@@ -33,7 +33,7 @@
 先停止正在运行的 DSH，再安装指定版本：
 
 ```bash
-dsh plugin --profile web add \
+npx @deepseek-ai/dsh plugin --profile web add \
   github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
@@ -49,7 +49,7 @@ pnpm dsh plugin --profile web add \
 ### 2. 重启 DSH
 
 ```bash
-dsh web
+npx @deepseek-ai/dsh web
 ```
 
 使用 DSH 源码仓库时：
@@ -122,15 +122,15 @@ Word 和 Excel 格式在以下条件全部满足时可以导出 PDF：
 替换已安装版本时，先停止 DSH，移除当前插件，再安装新 tag 并重启：
 
 ```bash
-dsh plugin --profile web remove dsh-fylar-office-editor
-dsh plugin --profile web add \
+npx @deepseek-ai/dsh plugin --profile web remove dsh-fylar-office-editor
+npx @deepseek-ai/dsh plugin --profile web add \
   github:FylarOpen/fylar-office-editor#v0.1.0
-dsh web
+npx @deepseek-ai/dsh web
 ```
 
 ## 当前限制
 
-- 仅验收上述 DSH 版本和 commit。
+- 对外兼容跟随 DSH npm `latest` 渠道；仓库 lockfile 精确固定开发基线，alpha 评估只用于提前发现下一版插件需要处理的问题。
 - 当前只有 DOCX 提供专用的 Agent 内容生成工具。
 - 浏览器内编辑必须下载保存，不会同步覆盖工作区原文件。
 - 每个页面只保留一个活动文档，而不是每个 DSH 任务分别保留一个文档。

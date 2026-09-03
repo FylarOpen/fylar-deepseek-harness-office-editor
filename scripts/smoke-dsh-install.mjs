@@ -12,7 +12,11 @@ const npmCache = join(temporaryRoot, 'npm-cache')
 mkdirSync(dshHome, { recursive: true })
 
 const executable = process.platform === 'win32' ? 'npx.cmd' : 'npx'
-const prefix = ['--yes', '--package', '@deepseek-ai/dsh@0.1.2-alpha.2', 'dsh']
+const channel = process.argv[2] ?? 'latest'
+if (!['latest', 'alpha'].includes(channel)) {
+  throw new Error(`Unsupported DSH npm channel: ${channel}`)
+}
+const prefix = ['--yes', '--package', `@deepseek-ai/dsh@${channel}`, 'dsh']
 const environment = { ...process.env, DSH_HOME: dshHome, npm_config_cache: npmCache }
 
 function run(arguments_) {
@@ -30,7 +34,7 @@ try {
   if (!config.includes('dsh-fylar-office-editor')) {
     throw new Error('DSH composed config does not contain the Fylar Office bundle and plugin row')
   }
-  console.log('Verified local tgz install and composed DSH web profile')
+  console.log(`Verified local tgz install with the DSH npm ${channel} channel`)
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }

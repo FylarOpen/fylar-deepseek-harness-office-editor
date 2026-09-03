@@ -22,7 +22,7 @@ The plugin can create a real DOCX file from the agent's Markdown response. It ca
 
 ### Requirements
 
-- DeepSeek Harness `0.1.2-alpha.2` at commit `0a53fb55bea101816fa226bb964ae2bed71c343b`.
+- DeepSeek Harness from the npm `latest` channel. This release's exact development baseline is `0.1.1-rc.2`; alpha builds are evaluated separately for upcoming changes and are not a supported user environment.
 - Node.js `^22.19.0 || >=24.0.0`.
 - The DSH Web profile.
 - A modern browser with Worker, SharedWorker, WebAssembly, IndexedDB, Blob, and ArrayBuffer support.
@@ -33,7 +33,7 @@ The plugin can create a real DOCX file from the agent's Markdown response. It ca
 Stop the currently running DSH process, then install a tagged release:
 
 ```bash
-dsh plugin --profile web add \
+npx @deepseek-ai/dsh plugin --profile web add \
   github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
@@ -49,7 +49,7 @@ You can replace `v0.1.0` with a full commit SHA when you need to pin an exact re
 ### 2. Restart DSH
 
 ```bash
-dsh web
+npx @deepseek-ai/dsh web
 ```
 
 When using the DSH source repository:
@@ -122,15 +122,15 @@ When the environment does not qualify, the PDF action is disabled and the plugin
 To replace an existing installation, stop DSH, remove the current plugin row, install the new tag, and restart:
 
 ```bash
-dsh plugin --profile web remove dsh-fylar-office-editor
-dsh plugin --profile web add \
+npx @deepseek-ai/dsh plugin --profile web remove dsh-fylar-office-editor
+npx @deepseek-ai/dsh plugin --profile web add \
   github:FylarOpen/fylar-office-editor#v0.1.0
-dsh web
+npx @deepseek-ai/dsh web
 ```
 
 ## Current limits
 
-- The plugin is validated only against the DSH version and commit listed above.
+- Public compatibility follows the DSH npm `latest` channel; the repository lockfile pins the exact development baseline, while alpha evaluation is only an early warning for a future plugin update.
 - Only DOCX has a dedicated agent-side content generator in this release.
 - Browser edits must be downloaded; they are not synchronized back to the workspace file.
 - The plugin keeps one active document per page rather than one document per DSH task.

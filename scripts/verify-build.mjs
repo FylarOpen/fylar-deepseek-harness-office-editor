@@ -26,6 +26,7 @@ const requiredClientFragments = [
   'tool.call.toolview',
   'conversation.chat.turnTail',
   'conversation.view',
+  'conversationEvents',
   'id: "office"',
   'fylar-office-tool-status',
   'fylar-office-editor-inline',
@@ -69,9 +70,12 @@ const moduleRequests = [...client.matchAll(/\brequire\((['"])([^'"]+)\1\)/g)]
   .map(match => match[2])
 for (const request of moduleRequests) {
   if (request === undefined || platformModules.has(request)) continue
-  throw new Error(`Client artifact has an undeclared DSH 0.1.2 module request: ${request}`)
+  throw new Error(`Client artifact has an undeclared DSH module request: ${request}`)
 }
 const clientManifest = manifest.dsh?.client
+if (manifest.dsh?.bundle?.patch !== './cordis.patch.yml') {
+  throw new Error('dsh.bundle.patch must point to ./cordis.patch.yml')
+}
 for (const lifecycle of ['prepare', 'prepack', 'preinstall', 'install', 'postinstall']) {
   if (manifest.scripts?.[lifecycle] !== undefined) {
     throw new Error(`Repository installs must not execute the ${lifecycle} lifecycle script`)
@@ -80,17 +84,11 @@ for (const lifecycle of ['prepare', 'prepack', 'preinstall', 'install', 'postins
 if (clientManifest?.external !== undefined && clientManifest.external.length !== 0) {
   throw new Error('This plugin must bundle its non-platform browser code instead of declaring client externals')
 }
-if (clientManifest?.inject?.includes('@deepseek-ai/dsh-client-runtime')) {
-  throw new Error('Retired @deepseek-ai/dsh-client-runtime remains in dsh.client.inject')
-}
 if (!clientManifest?.inject?.includes('@deepseek-ai/dsh-client-locale')) {
   throw new Error('The DSH locale service is missing from dsh.client.inject')
 }
 for (const forbidden of ['office.core.js', 'mountDocxApp.js', 'canvaskit.wasm']) {
   if (client.includes(forbidden)) throw new Error(`Client artifact bundled Office runtime content: ${forbidden}`)
-}
-if (client.includes('@deepseek-ai/dsh-client-runtime')) {
-  throw new Error('Client artifact still references the retired DSH client runtime package')
 }
 for (const fragment of ['register({', '/fylar-office-sdk', '/fylar-office-files', 'office_create_docx', 'office_present_file']) {
   if (!host.includes(fragment)) throw new Error(`Host artifact is missing: ${fragment}`)
