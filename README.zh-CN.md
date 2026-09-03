@@ -37,7 +37,7 @@ dsh plugin --profile web add \
   github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
-如果你从 DSH 源码仓库运行，则在 DSH 源码根目录执行：
+如果从 DSH 源码仓库运行，则在 DSH 源码根目录执行：
 
 ```bash
 pnpm dsh plugin --profile web add \
@@ -87,13 +87,13 @@ DSH 会根据用户请求和插件加入的模型规则选择这些工具。普�
 
 ## 格式支持
 
-| 格式 | 打开与编辑 | Office 页签新建 | Agent 内置生成 | 下载编辑结果 | 导出 PDF |
-| --- | --- | --- | --- | --- | --- |
-| DOC | 支持 | 不支持 | 不支持 | DOC | 支持 |
-| DOCX | 支持 | 支持 | 支持 | DOCX | 支持 |
-| XLS | 支持 | 不支持 | 不支持 | XLS | 支持 |
-| XLSX | 支持 | 支持 | 不支持 | XLSX | 支持 |
-| PPTX | 支持 | 支持 | 不支持 | PPTX | 不支持 |
+| 格式 | 打开 | 编辑 | Office 页签新建 | 下载编辑结果 | 导出 PDF |
+| ---- | ---- | ---- | --------------- | ------------ | -------- |
+| DOC  | 支持 | 支持 | 不支持          | DOC          | 支持     |
+| DOCX | 支持 | 支持 | 支持            | DOCX         | 支持     |
+| XLS  | 支持 | 支持 | 不支持          | XLS          | 支持     |
+| XLSX | 支持 | 支持 | 支持            | XLSX         | 支持     |
+| PPTX | 支持 | 支持 | 支持            | PPTX         | 不支持   |
 
 Office 页签也可以选择受支持的本地文件。本地文件打开后保留在浏览器侧，不会因为打开操作而写入 DSH 工作区。
 
@@ -104,11 +104,8 @@ Office 页签也可以选择受支持的本地文件。本地文件打开后保�
 - 页面内编辑不会自动覆盖工作区原文件。
 - 使用“导出”下载并保留编辑后的 Office 文档。
 - 关闭或替换当前文档会结束浏览器编辑会话。
-- 插件检测到可能存在修改时，刷新或离开页面可能触发浏览器提醒。
+- 插件检测到可能存在修改时，刷新或离开页面会触发浏览器提醒。
 - 成功下载 Office 格式会清除提醒状态；PDF 导出不会清除。
-- 当前页面全局只保活一个 Office 文档。
-
-这是因为当前 SDK 没有提供把编辑后 Blob 交还 Host 的 API，也没有精确的 dirty-state API。
 
 ## PDF 导出
 
@@ -118,7 +115,7 @@ Word 和 Excel 格式在以下条件全部满足时可以导出 PDF：
 - 浏览器支持 `window.queryLocalFonts`；
 - 用户允许读取本地字体。
 
-环境不满足时，PDF 操作会被禁用并显示原因。当前不提供 PowerPoint PDF 导出。
+环境不满足时，PDF 操作会被禁用并显示原因。PowerPoint PDF 导出将在后续版本推出。
 
 ## 升级与卸载
 
@@ -138,10 +135,9 @@ dsh web
 - 浏览器内编辑必须下载保存，不会同步覆盖工作区原文件。
 - 每个页面只保留一个活动文档，而不是每个 DSH 任务分别保留一个文档。
 - PDF 导出依赖浏览器能力和本地字体权限。
-- 当前通过 GitHub 分发，不发布到公共 npm registry。
 
 ## 分发与声明
 
-npm 包元数据仍设置为 `private: true` 和 `UNLICENSED`，本仓库不是 npm registry 发布。本项目包含的 Fylar Office SDK 是专有软件，受[其许可声明](./vendor/office-sdk/legal.txt)、适用的试用条款以及与版权方签订的其他协议约束。能够访问 GitHub 仓库本身并不代表 SDK 被重新授权。
+本仓库不是 npm registry 发布。本项目包含的 Fylar Office SDK 是专有软件，受[其许可声明](./vendor/office-sdk/legal.txt)、适用的试用条款以及与版权方签订的其他协议约束。能够访问 GitHub 仓库本身并不代表 SDK 被重新授权。
 
 第三方声明保留在 [THIRD_PARTY_NOTICES](./vendor/office-sdk/THIRD_PARTY_NOTICES)。使用或分发构建包前请阅读 [NOTICE.md](./NOTICE.md)。

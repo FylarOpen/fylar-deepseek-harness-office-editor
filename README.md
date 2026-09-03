@@ -37,7 +37,7 @@ dsh plugin --profile web add \
   github:FylarOpen/fylar-office-editor#v0.1.0
 ```
 
-If you run DSH from its source repository, use the repository script instead:
+If running DSH from its source repository, use the repository script instead:
 
 ```bash
 pnpm dsh plugin --profile web add \
@@ -87,13 +87,13 @@ After publication, the assistant turn contains one Office delivery card. Open it
 
 ## Supported formats
 
-| Format | Open and edit | Create from Office tab | Agent-native generation | Download edited file | Export PDF |
-| --- | --- | --- | --- | --- | --- |
-| DOC | Yes | No | No | DOC | Yes |
-| DOCX | Yes | Yes | Yes | DOCX | Yes |
-| XLS | Yes | No | No | XLS | Yes |
-| XLSX | Yes | Yes | No | XLSX | Yes |
-| PPTX | Yes | Yes | No | PPTX | No |
+| Format | Open | Edit | Create from Office tab | Download edited file | Export PDF |
+| ------ | ---- | ---- | ---------------------- | -------------------- | ---------- |
+| DOC    | Yes  | Yes  | No                     | DOC                  | Yes        |
+| DOCX   | Yes  | Yes  | Yes                    | DOCX                 | Yes        |
+| XLS    | Yes  | Yes  | No                     | XLS                  | Yes        |
+| XLSX   | Yes  | Yes  | Yes                    | XLSX                 | Yes        |
+| PPTX   | Yes  | Yes  | Yes                    | PPTX                 | No         |
 
 The Office tab also lets you select a supported local file. Local files remain browser-side and are not written into the DSH workspace by opening them.
 
@@ -104,11 +104,8 @@ Document rendering and editing are owned by the Fylar Office SDK after the brows
 - Editing does not automatically overwrite the original workspace file.
 - Use **Export** to download and retain the edited Office document.
 - Closing or replacing the current document ends the browser editing session.
-- Refreshing or leaving the page may warn when the plugin has detected possible edits.
+- Refreshing or leaving the page triggers a browser warning when the plugin has detected possible edits.
 - A successful Office-format download clears that warning state; PDF export does not.
-- Only one Office document is kept alive globally in the current page.
-
-This behavior is intentional because the current SDK does not expose an API for returning the edited document Blob to the Host or an exact dirty-state API.
 
 ## PDF export
 
@@ -118,7 +115,7 @@ PDF export is available for Word and Excel formats when all of the following are
 - the browser supports `window.queryLocalFonts`;
 - the user grants local-font access.
 
-When the environment does not qualify, the PDF action is disabled and the plugin explains why. PowerPoint PDF export is not currently exposed.
+When the environment does not qualify, the PDF action is disabled and the plugin explains why. PowerPoint PDF export will be introduced in a future release.
 
 ## Upgrade and uninstall
 
@@ -138,10 +135,9 @@ dsh web
 - Browser edits must be downloaded; they are not synchronized back to the workspace file.
 - The plugin keeps one active document per page rather than one document per DSH task.
 - PDF export depends on browser and font-access capabilities.
-- The package is distributed through GitHub rather than the public npm registry.
 
 ## Distribution and notices
 
-The npm package metadata remains `private: true` and `UNLICENSED`; this repository is not an npm registry release. The bundled Fylar Office SDK is proprietary and is governed by [its license notice](./vendor/office-sdk/legal.txt), any applicable trial terms, and any separate agreement with its copyright holder. GitHub access alone does not relicense the SDK.
+This repository is not published through the npm registry. The bundled Fylar Office SDK is proprietary and is governed by [its license notice](./vendor/office-sdk/legal.txt), any applicable trial terms, and any separate agreement with its copyright holder. GitHub access alone does not relicense the SDK.
 
 Third-party notices are preserved in [THIRD_PARTY_NOTICES](./vendor/office-sdk/THIRD_PARTY_NOTICES). See [NOTICE.md](./NOTICE.md) before using or redistributing a packaged build.
