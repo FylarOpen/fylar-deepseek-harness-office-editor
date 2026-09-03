@@ -1,0 +1,13 @@
+Proprietary License
+
+Copyright (c) 2026 Office SDK. All rights reserved.
+
+This software is proprietary and confidential. No license is granted to use,
+copy, modify, distribute, sublicense, or sell this software except under a
+separate written agreement with the copyright holder.
+
+If you received this software without a separate written agreement, you must
+not use, copy, modify, distribute, sublicense, or sell it.
+
+Third-party components included with this package remain subject to their
+respective license terms.

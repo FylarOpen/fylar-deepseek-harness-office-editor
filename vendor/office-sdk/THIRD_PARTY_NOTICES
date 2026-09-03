@@ -1,0 +1,51 @@
+THIRD PARTY NOTICES
+
+This file lists third-party components that may be bundled with the Office SDK
+release package. The Office SDK license is provided in legal.txt. Third-party
+components remain subject to their own license terms.
+
+Scope
+
+This notice covers third-party code or assets distributed in the published
+Office SDK package and in the external package that embeds lib/. Build-only,
+test-only, and development-only dependencies are excluded unless their code is
+included in the published runtime artifacts.
+
+Embedded compatibility implementations
+
+- js-cookie-compatible cookie runtime
+  Included file: lib/office.core.js
+  Source metadata: js-cookie 3.0.1, MIT.
+
+- blueimp-md5-compatible MD5 runtime
+  Included file: lib/office.core.js
+  Source metadata: blueimp-md5 2.19.0, MIT; based on Paul Johnston MD5 code distributed under BSD.
+
+Bundled copied files
+
+- XRegExp-All v3.0.0
+  Included file: lib/vendor/xregexp-all-min.js
+  License: MIT
+
+- Zepto v1.2.0-30-gb5ed8d6
+  Included file: lib/vendor/zepto.min.js
+  License reference: zeptojs.com/license
+  Release action: verify upstream copyright and full license text before external publication.
+
+Bundled runtime categories
+
+- Client UI runtime
+  Included files: lib/UI.runtime.js, lib/ApiBase.js, lib/DropdownPopoverList.js, lib/mount*.js
+  Known runtime families: Vue 3, Vuex, vue-i18n, Naive UI, css-render, @vicons/ionicons5, deepmerge.
+  Release action: generate the final dependency/license inventory from the production bundle before external publication.
+
+- Worker and WebAssembly runtime
+  Included files: lib/worker/index.js, lib/worker/sharedWorkerStorage.worker.js, lib/worker/wasm/*
+  Known runtime families: CanvasKit/Skia and OOXML conversion modules.
+  Release action: verify source packages, copyright holders, and license terms before external publication.
+
+- OOXML schema-derived data and generated runtime assets
+  Included files: lib/office.core.js and worker artifacts may contain generated data from the core runtime.
+  Release action: verify whether any third-party schema, sample, or generated data is embedded and include required notices.
+
+Do not remove copyright or license notices from third-party files.

@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Generated package archives and reports. The prebuilt lib/ tree is tracked so
+# DSH can install this repository without running lifecycle scripts.
+*.tgz
+coverage/
+
+# Test and tool caches
+.vitest/
+.cache/
+*.log
+
+# Local environment and editor files
+.DS_Store
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+
+# Local maintainer and product-review notes are intentionally not published.
+/MAINTAINER.local.md
+/PRODUCT_UX_REVIEW.md
+
+# SDK synchronization scratch/backup paths (the locked vendor tree is tracked)
+vendor/.office-sdk-backup/
+/external*.zip

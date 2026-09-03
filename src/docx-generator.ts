@@ -1,0 +1,184 @@
+/** Markdown-to-DOCX conversion used by the model-facing Office tool. */
+import {
+  AlignmentType,
+  Document,
+  HeadingLevel,
+  LevelFormat,
+  Packer,
+  Paragraph,
+  Table,
+  TableCell,
+  TableRow,
+  TextRun,
+  WidthType,
+} from 'docx'
+
+const HEADING_LEVELS = [
+  HeadingLevel.HEADING_1,
+  HeadingLevel.HEADING_2,
+  HeadingLevel.HEADING_3,
+  HeadingLevel.HEADING_4,
+  HeadingLevel.HEADING_5,
+  HeadingLevel.HEADING_6,
+] as const
+
+/** Convert small, common Markdown inline spans into Word text runs. */
+export function inlineRuns(text: string): TextRun[] {
+  const runs: TextRun[] = []
+  const pattern = /(\*\*[^*]+\*\*|__[^_]+__|`[^`]+`|\*[^*]+\*|_[^_]+_)/gu
+  let at = 0
+  for (const match of text.matchAll(pattern)) {
+    const index = match.index ?? 0
+    if (index > at) runs.push(new TextRun(text.slice(at, index)))
+    const token = match[0]
+    if (token.startsWith('**') || token.startsWith('__')) {
+      runs.push(new TextRun({ text: token.slice(2, -2), bold: true }))
+    } else if (token.startsWith('`')) {
+      runs.push(new TextRun({ text: token.slice(1, -1), font: 'Courier New', shading: { fill: 'F2F2F2' } }))
+    } else {
+      runs.push(new TextRun({ text: token.slice(1, -1), italics: true }))
+    }
+    at = index + token.length
+  }
+  if (at < text.length) runs.push(new TextRun(text.slice(at)))
+  return runs.length === 0 ? [new TextRun('')] : runs
+}
+
+function tableCells(line: string): string[] {
+  const trimmed = line.trim().replace(/^\|/u, '').replace(/\|$/u, '')
+  return trimmed.split('|').map(value => value.trim())
+}
+
+function isTableSeparator(line: string): boolean {
+  const cells = tableCells(line)
+  return cells.length > 0 && cells.every(cell => /^:?-{3,}:?$/u.test(cell))
+}
+
+function makeTable(rows: readonly string[][]): Table {
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    rows: rows.map((row, rowIndex) => new TableRow({
+      children: row.map(cell => new TableCell({
+        children: [new Paragraph({
+          children: rowIndex === 0 ? [new TextRun({ text: cell, bold: true })] : inlineRuns(cell),
+        })],
+      })),
+    })),
+  })
+}
+
+function markdownBlocks(markdown: string): Array<Paragraph | Table> {
+  const children: Array<Paragraph | Table> = []
+  const lines = markdown.replace(/\r\n?/gu, '\n').split('\n')
+  let index = 0
+  let inFence = false
+  let fenceLines: string[] = []
+
+  while (index < lines.length) {
+    const line = lines[index] ?? ''
+    if (/^```/u.test(line.trim())) {
+      if (inFence) {
+        children.push(new Paragraph({
+          children: [new TextRun({ text: fenceLines.join('\n'), font: 'Courier New' })],
+          shading: { fill: 'F6F8FA' },
+          spacing: { before: 120, after: 120 },
+        }))
+        fenceLines = []
+        inFence = false
+      } else {
+        inFence = true
+      }
+      index += 1
+      continue
+    }
+    if (inFence) {
+      fenceLines.push(line)
+      index += 1
+      continue
+    }
+
+    if (index + 1 < lines.length && line.includes('|') && isTableSeparator(lines[index + 1] ?? '')) {
+      const rows = [tableCells(line)]
+      index += 2
+      while (index < lines.length && (lines[index] ?? '').includes('|') && (lines[index] ?? '').trim() !== '') {
+        rows.push(tableCells(lines[index] ?? ''))
+        index += 1
+      }
+      children.push(makeTable(rows))
+      continue
+    }
+
+    const heading = /^(#{1,6})\s+(.+)$/u.exec(line)
+    if (heading !== null) {
+      const marks = heading[1] as string
+      const text = heading[2] as string
+      children.push(new Paragraph({
+        heading: HEADING_LEVELS[marks.length - 1] as (typeof HEADING_LEVELS)[number],
+        children: inlineRuns(text),
+      }))
+      index += 1
+      continue
+    }
+    const bullet = /^\s*[-*+]\s+(.+)$/u.exec(line)
+    if (bullet !== null) {
+      children.push(new Paragraph({ children: inlineRuns(bullet[1] as string), bullet: { level: 0 } }))
+      index += 1
+      continue
+    }
+    const ordered = /^\s*\d+[.)]\s+(.+)$/u.exec(line)
+    if (ordered !== null) {
+      children.push(new Paragraph({
+        children: inlineRuns(ordered[1] as string),
+        numbering: { reference: 'bamboo-numbering', level: 0 },
+      }))
+      index += 1
+      continue
+    }
+    if (line.trim() === '') {
+      children.push(new Paragraph(''))
+    } else {
+      children.push(new Paragraph({ children: inlineRuns(line), spacing: { after: 120 } }))
+    }
+    index += 1
+  }
+
+  if (inFence && fenceLines.length > 0) {
+    children.push(new Paragraph({
+      children: [new TextRun({ text: fenceLines.join('\n'), font: 'Courier New' })],
+      shading: { fill: 'F6F8FA' },
+    }))
+  }
+  return children
+}
+
+/** Build a standards-compliant DOCX buffer from a title and Markdown body. */
+export async function createDocxBuffer(title: string | undefined, markdown: string): Promise<Buffer> {
+  const content = markdownBlocks(markdown)
+  const document = new Document({
+    creator: 'DSH Fylar Office Editor',
+    title: title ?? '',
+    description: 'Generated by dsh-fylar-office-editor',
+    numbering: {
+      config: [{
+        reference: 'bamboo-numbering',
+        levels: [{
+          level: 0,
+          format: LevelFormat.DECIMAL,
+          text: '%1.',
+          alignment: AlignmentType.START,
+          style: { paragraph: { indent: { left: 720, hanging: 360 } } },
+        }],
+      }],
+    },
+    sections: [{
+      properties: {},
+      children: [
+        ...(title === undefined || title.trim() === ''
+          ? []
+          : [new Paragraph({ heading: HeadingLevel.TITLE, children: inlineRuns(title.trim()) })]),
+        ...content,
+      ],
+    }],
+  })
+  return Packer.toBuffer(document)
+}

@@ -1,0 +1,149 @@
+# DeepSeek Harness 的 Fylar Office Editor
+
+> 让 Agent 生成的 Office 文件直接进入 DeepSeek Harness，在对话中打开、预览、编辑并下载。
+
+[English](./README.md) · 简体中文
+
+`dsh-fylar-office-editor` 将 Office 文档接入 DeepSeek Harness（DSH）Web。插件提供对话交付卡片、Office 工作区页签、右侧栏编辑器和全屏编辑器，底层由 Bamboo Office SDK 驱动。
+
+插件可以把 Agent 的 Markdown 回复转换为真实 DOCX，也可以展示由 Python、Shell 或其他工具在当前 DSH 工作区生成的 DOC、DOCX、XLS、XLSX 和 PPTX 文件。
+
+## 主要能力
+
+- **在对话中交付 Office 文件**：可以在消息内展开、把同一个编辑会话移到右侧栏，或进入全屏。
+- **生成真实 DOCX**：支持把标题、段落、列表、简单表格、代码块、粗体、斜体和行内代码转换为 OOXML Word 文档。
+- **编辑 Word、Excel 和 PowerPoint**：打开受支持的本地文件或工作区文件，也可以从 Office 页签新建空白文档。
+- **复用同一个编辑会话**：在 Chat、Office 页签、右侧栏和全屏之间切换时不会重新打开文档。
+- **通过下载保留编辑结果**：浏览器内修改保留在 SDK 会话中，下载编辑后的 Office 文件后才能长期保存。
+- **中英文界面**：插件外层跟随 DSH 语言；SDK 加载对应的语言包。
+- **限制在工作区内读取**：Host 只提供已注册 DSH 工作区中的受支持文件，并阻止目录穿越和符号链接逃逸。
+
+## 快速开始
+
+### 环境要求
+
+- DeepSeek Harness `0.1.2-alpha.2`，对应 commit `0a53fb55bea101816fa226bb964ae2bed71c343b`。
+- Node.js `^22.19.0 || >=24.0.0`。
+- DSH Web profile。
+- 浏览器支持 Worker、SharedWorker、WebAssembly、IndexedDB、Blob 和 ArrayBuffer。
+- 根据所使用的 SDK 版本，具备有效的 Bamboo Office SDK 试用许可或其他授权。
+
+### 1. 从 GitHub 安装
+
+先停止正在运行的 DSH，再安装指定版本：
+
+```bash
+dsh plugin --profile web add \
+  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+```
+
+如果你从 DSH 源码仓库运行，则在 DSH 源码根目录执行：
+
+```bash
+pnpm dsh plugin --profile web add \
+  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+```
+
+需要锁定某个精确修订时，可以把 `v0.1.0` 换成完整 commit SHA。仓库已经包含验证过的 `lib/` 构建产物和 SDK runtime，普通用户不需要克隆或构建插件。
+
+### 2. 重启 DSH
+
+```bash
+dsh web
+```
+
+使用 DSH 源码仓库时：
+
+```bash
+pnpm dsh web
+```
+
+Web 进程重启后，刷新已经打开的 DSH 页面。
+
+### 3. 在对话中提出需求
+
+请在允许写工作区的会话中尝试：
+
+```text
+把本轮对话整理成 Word 项目总结，保存为 reports/project-summary.docx。
+
+在工作区生成一份 XLSX 对比表，然后打开预览。
+
+用 Office 编辑器打开已有的 slides/company-introduction.pptx。
+```
+
+插件内置的 Agent 工具可以直接生成 DOCX。XLSX 和 PPTX 内容目前需要由其他 Agent 工具或脚本生成，再由本插件校验并发布。
+
+## 工作原理
+
+插件提供两条文件交付路径：
+
+1. `office_create_docx` 把 Markdown 转换为真实 DOCX，写入当前 DSH 工作区，并把结果发布到对话。
+2. `office_present_file` 校验当前工作区中已经存在的 Office 文件并发布，但不会生成或修改文件。
+
+DSH 会根据用户请求和插件加入的模型规则选择这些工具。普通用户不需要在提示词中指定工具名。
+
+文件发布成功后，助手消息中只显示一张 Office 交付卡片。可以在对话内打开、移到右侧栏、切换到 Office 页签或进入全屏；这些位置始终复用同一个浏览器 SDK widget。
+
+## 格式支持
+
+| 格式 | 打开与编辑 | Office 页签新建 | Agent 内置生成 | 下载编辑结果 | 导出 PDF |
+| --- | --- | --- | --- | --- | --- |
+| DOC | 支持 | 不支持 | 不支持 | DOC | 支持 |
+| DOCX | 支持 | 支持 | 支持 | DOCX | 支持 |
+| XLS | 支持 | 不支持 | 不支持 | XLS | 支持 |
+| XLSX | 支持 | 支持 | 不支持 | XLSX | 支持 |
+| PPTX | 支持 | 支持 | 不支持 | PPTX | 不支持 |
+
+Office 页签也可以选择受支持的本地文件。本地文件打开后保留在浏览器侧，不会因为打开操作而写入 DSH 工作区。
+
+## 编辑与保存
+
+浏览器取得文件 Blob 后，文档渲染和内部编辑状态均由 Bamboo Office SDK 管理。输入内容时不会通过 DSH 文件系统回写原文件。
+
+- 页面内编辑不会自动覆盖工作区原文件。
+- 使用“导出”下载并保留编辑后的 Office 文档。
+- 关闭或替换当前文档会结束浏览器编辑会话。
+- 插件检测到可能存在修改时，刷新或离开页面可能触发浏览器提醒。
+- 成功下载 Office 格式会清除提醒状态；PDF 导出不会清除。
+- 当前页面全局只保活一个 Office 文档。
+
+这是因为当前 SDK 没有提供把编辑后 Blob 交还 Host 的 API，也没有精确的 dirty-state API。
+
+## PDF 导出
+
+Word 和 Excel 格式在以下条件全部满足时可以导出 PDF：
+
+- 页面运行在 `localhost` 或 HTTPS；
+- 浏览器支持 `window.queryLocalFonts`；
+- 用户允许读取本地字体。
+
+环境不满足时，PDF 操作会被禁用并显示原因。当前不提供 PowerPoint PDF 导出。
+
+## 升级与卸载
+
+替换已安装版本时，先停止 DSH，移除当前插件，再安装新 tag 并重启：
+
+```bash
+dsh plugin --profile web remove dsh-fylar-office-editor
+dsh plugin --profile web add \
+  github:FylarOpen-ai/fylar-office-editor#v0.1.0
+dsh web
+```
+
+如果以前安装过 `dsh-bamboo-office` 或 `@bamboo/dsh-office`，请先按旧名称移除一次，再安装 `dsh-fylar-office-editor`。
+
+## 当前限制
+
+- 仅验收上述 DSH 版本和 commit。
+- 当前只有 DOCX 提供专用的 Agent 内容生成工具。
+- 浏览器内编辑必须下载保存，不会同步覆盖工作区原文件。
+- 每个页面只保留一个活动文档，而不是每个 DSH 任务分别保留一个文档。
+- PDF 导出依赖浏览器能力和本地字体权限。
+- 当前通过 GitHub 分发，不发布到公共 npm registry。
+
+## 分发与声明
+
+npm 包元数据仍设置为 `private: true` 和 `UNLICENSED`，本仓库不是 npm registry 发布。本项目包含的 Bamboo Office SDK 是专有软件，受[其许可声明](./vendor/office-sdk/legal.txt)、适用的试用条款以及与版权方签订的其他协议约束。能够访问 GitHub 仓库本身并不代表 SDK 被重新授权。
+
+第三方声明保留在 [THIRD_PARTY_NOTICES](./vendor/office-sdk/THIRD_PARTY_NOTICES)。使用或分发构建包前请阅读 [NOTICE.md](./NOTICE.md)。

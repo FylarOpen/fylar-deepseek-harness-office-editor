@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install exact development dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --legacy-peer-deps
+      - name: Verify source, SDK, build contract, package contents, and committed lib
+        run: npm run ci:check

@@ -1,0 +1,4 @@
+/lib/** linguist-generated=true
+/vendor/office-sdk/** linguist-vendored=true
+*.wasm binary
+*.zip binary

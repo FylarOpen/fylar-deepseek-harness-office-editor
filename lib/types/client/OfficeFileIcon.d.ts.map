@@ -1,0 +1,1 @@
+{"version":3,"file":"OfficeFileIcon.d.ts","sourceRoot":"","sources":["../../../src/client/OfficeFileIcon.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,wBAAwB,EAAE,MAAM,mBAAmB,CAAA;AAEjE,wBAAgB,cAAc,CAAC,EAC7B,UAAU,EAAE,OAAe,GAC5B,EAAE;IACD,QAAQ,CAAC,UAAU,EAAE,wBAAwB,CAAA;IAC7C,QAAQ,CAAC,OAAO,CAAC,EAAE,OAAO,GAAG,SAAS,CAAA;CACvC,2CAWA"}

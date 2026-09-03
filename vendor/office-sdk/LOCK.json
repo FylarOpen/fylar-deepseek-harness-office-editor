@@ -1,0 +1,289 @@
+{
+  "formatVersion": 1,
+  "sdkName": "@office/office-sdk",
+  "sdkVersion": "1.0.0",
+  "source": "office-sdk",
+  "sourceSha256": "a1a5a0a5e313ebdc9ce06bbd5c67ae9dbb192d835172714b5acfa14c2dbed3c3",
+  "files": [
+    {
+      "path": "ApiBase.js",
+      "size": 1291198,
+      "sha256": "6f7f16ad7806d3099aa0a8c380ecbe251a6d1df3a97165f37ac8c5d71b711bdb"
+    },
+    {
+      "path": "DropdownPopoverList.js",
+      "size": 3703,
+      "sha256": "500c078b5cc0981238635a1ae67536ffd229a3492af5815b2a087ea30cb976de"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES",
+      "size": 2194,
+      "sha256": "bf01866b6aba3dad6f69e5973202fd7d3c6d6e253c8af7f0830dee04640f4ba8"
+    },
+    {
+      "path": "UI.d.ts",
+      "size": 15344,
+      "sha256": "32d11de8cf12842f37ce798eab5f3e07773819404e1e208eda40503ce5fb6470"
+    },
+    {
+      "path": "UI.js",
+      "size": 183,
+      "sha256": "a4f51aeabdccbf982e1622d1ee75ca060c7c988c7e1d962cd58980f553ba3cbf"
+    },
+    {
+      "path": "UI.runtime.js",
+      "size": 36374,
+      "sha256": "7d8d3c54b46552be09347558b4e9ac6d1754aa3a4379a6b69a2009f85273b53e"
+    },
+    {
+      "path": "assets/Form-nD5OzkSv.js",
+      "size": 16163,
+      "sha256": "3f786725c13df49b37beab37bf06f858960b4c521b92a01ae0821f0cf722ea7c"
+    },
+    {
+      "path": "assets/IconTextButton-BpiFDMZq.js",
+      "size": 5086,
+      "sha256": "83d68dab854f7e463d47146413d243774543a3651add357a73b34af30521892f"
+    },
+    {
+      "path": "assets/index-CdoSPLcH.js",
+      "size": 225324,
+      "sha256": "f465ba1a9dfbfdf671f75d9d66b375ff053eeb8610592762584dd6e0b2287c76"
+    },
+    {
+      "path": "assets/index-CyS-SRjS.js",
+      "size": 153774,
+      "sha256": "d8d5eaa41fadec572a2749909001ae2ee84f71b726a3f1615fd60ff04663b6fc"
+    },
+    {
+      "path": "compat-globals.js",
+      "size": 2204,
+      "sha256": "ad45ae2350fde38aca5b3f03405bf8cb7c2b7e0337e0c9217b6040042c84cdb9"
+    },
+    {
+      "path": "index_browser.js",
+      "size": 110,
+      "sha256": "aafd8e8eca83d0dea506725572a12b598e1228714b9cfb72949e2bf08466f123"
+    },
+    {
+      "path": "legal.txt",
+      "size": 518,
+      "sha256": "c23578853ea5bae783cd79b35ee212e50624145552cf3078debb5ca2694fc677"
+    },
+    {
+      "path": "licenseDefault.js",
+      "size": 118,
+      "sha256": "10ad9bc1f38e26371a05b8172a177328a001bc2330e6af123973ad542bfedfb5"
+    },
+    {
+      "path": "locale-assets/deploy/i18n/docxLib/en-US/defaultDocx.zip",
+      "size": 111676,
+      "sha256": "408846da4f1624978f898916f99fd95a18c7124f751154643a036f322b42e128"
+    },
+    {
+      "path": "locale-assets/deploy/i18n/docxLib/zh-CN/defaultDocx.zip",
+      "size": 115455,
+      "sha256": "1ae2024b6bdff7bf58016624938fbd8ba3667f62c78a7e3914ef2b61f5d501f9"
+    },
+    {
+      "path": "locale-assets/deploy/i18n/pptxLib/en-US/defaultPptx.zip",
+      "size": 128606,
+      "sha256": "b7829edd98b749b040d0adf993dd605aa3896679fcb03ec0c57130ebd8a1d9d4"
+    },
+    {
+      "path": "locale-assets/deploy/i18n/pptxLib/zh-CN/defaultPptx.zip",
+      "size": 132464,
+      "sha256": "1ffc5b5a744e09d833a7a345c0e640657a751ae913788b85d88ec2408bb46fbf"
+    },
+    {
+      "path": "locale-assets/deploy/i18n/xlsxLib/en-US/defaultXlsx.zip",
+      "size": 120871,
+      "sha256": "f8f2be869a19533ba5cf5b397493ab02cccba82fb0e088fae075240c09e0ce92"
+    },
+    {
+      "path": "locale-assets/deploy/i18n/xlsxLib/zh-CN/defaultXlsx.zip",
+      "size": 121306,
+      "sha256": "2ff4900b2a299257610706b34f803f766d21183b10e91976c694fefea89fcfe8"
+    },
+    {
+      "path": "locale-assets/deploy/sample/blank.docx",
+      "size": 13295,
+      "sha256": "f2b5bb21f47e36831204e3431711352446fa0c79c67924e1e3f8d3b11f65aad2"
+    },
+    {
+      "path": "locale-assets/deploy/sample/blank.pptx",
+      "size": 33108,
+      "sha256": "ca917ba71628c62f0db8a1c30bc901d49f3e4d776b683244654b37778b41d129"
+    },
+    {
+      "path": "locale-assets/deploy/sample/blank.xlsx",
+      "size": 8360,
+      "sha256": "7fa1736ab45758bf044c4004ff2e94da332fc5a640d052446ff11673a5479a93"
+    },
+    {
+      "path": "locale-assets/locale.js",
+      "size": 449089,
+      "sha256": "06787dbc0383bcf4cbb5ab2722077c96cdf89412c232ac03d67d5bcbe2a8de1c"
+    },
+    {
+      "path": "manifest.json",
+      "size": 1136,
+      "sha256": "cbea76436d2714d6825f3caf629b3d9c4bb5e32ccecb9773abf9f17283c7842c"
+    },
+    {
+      "path": "manifestLoader.js",
+      "size": 821,
+      "sha256": "6b41a87e34a52dba60ac4c2aecc9816911210e703a8340ea2c4d5a4733f06402"
+    },
+    {
+      "path": "mountDocxApp.js",
+      "size": 558146,
+      "sha256": "9ba9d620aa44586f9581fe9fdc97d00f46ecebcf0b17da255c92c5b2d4aa3dc3"
+    },
+    {
+      "path": "mountPptxApp.js",
+      "size": 708024,
+      "sha256": "d15bb3a3bc819f76ad42a9518471cd8b257e9b23f997bfda21701183f137167d"
+    },
+    {
+      "path": "mountXlsxApp.js",
+      "size": 1270617,
+      "sha256": "c5acd92d99624a453094ba579c9b93f59c267995072c98ee1733835ee094bad0"
+    },
+    {
+      "path": "office.core.js",
+      "size": 4969883,
+      "sha256": "78899614066dd54440567f554a8e504d58e2fab1a67ac96dbe3e8f2acf50324a"
+    },
+    {
+      "path": "office.locale.js",
+      "size": 69,
+      "sha256": "1924061bc1e890e74699f7302995a75844a22b803209e58b92a99fc7dd35bf58"
+    },
+    {
+      "path": "package.json",
+      "size": 845,
+      "sha256": "bb188370d660c57c8c265ce7a8fb87ce2667177e37be6dc7e378a4538e5360d2"
+    },
+    {
+      "path": "preload.js",
+      "size": 4577,
+      "sha256": "c0360473ede36675fca9db6af76daff55af914b80f29b7b260c19114c771c4c6"
+    },
+    {
+      "path": "service-worker.js",
+      "size": 813,
+      "sha256": "adb4f0205aa452d83ea9e018bddbf302171ebf64fa38fc127801947544e3ad08"
+    },
+    {
+      "path": "style.css",
+      "size": 152877,
+      "sha256": "bf063af731548c41beae489cc240caf40f925c986a8aede785295dd02315497d"
+    },
+    {
+      "path": "vendor/xregexp-all-min.js",
+      "size": 118853,
+      "sha256": "506e604d5193ccdba3b3dba8fbea0298d2f24fd10f05f0052cb9abfbdd0204a0"
+    },
+    {
+      "path": "vendor/zepto.min.js",
+      "size": 24789,
+      "sha256": "db9d3a65722ac234eec828c360137d3c51b8988a9b42c491283b4f6f74f815c8"
+    },
+    {
+      "path": "worker/index.js",
+      "size": 13648,
+      "sha256": "099321795109ca69c4f6d28a77ddaabc89e4e3307c982d5726d539e26b13d2a2"
+    },
+    {
+      "path": "worker/sharedWorkerStorage.worker.js",
+      "size": 12364,
+      "sha256": "1b1acec1e13e4c238cbc5b47ffaebae1bb741607413463e69a62a025e165e713"
+    },
+    {
+      "path": "worker/wasm/bootloader.js",
+      "size": 54420,
+      "sha256": "fda1ddbe069d392f8f38979c45ffa2ab3250fee256b92e60d7b0a84d38365dd2"
+    },
+    {
+      "path": "worker/wasm/bootloader.wasm",
+      "size": 2055117,
+      "sha256": "53e0dbe12263c92f935ad03ebf996d5626dc2f79f776197cf747e1f06e84c5d6"
+    },
+    {
+      "path": "worker/wasm/canvaskit.js",
+      "size": 298744,
+      "sha256": "dc1f089ff6aed1d3e9595856a560f3379e99a9af9225e158f35231da28daad35"
+    },
+    {
+      "path": "worker/wasm/canvaskit.wasm",
+      "size": 9384388,
+      "sha256": "4388dfbcf42672b4ccfe057a8aec00d00883bcb104aa9f0ba0758449b6f39d18"
+    },
+    {
+      "path": "worker/wasm/cfb2ooxml.js",
+      "size": 56493,
+      "sha256": "ab7172bd0c76fc086dc17d3f30e5d0e77907b3c6a840f8a72ebb1f219c17e68e"
+    },
+    {
+      "path": "worker/wasm/cfb2ooxml.wasm",
+      "size": 4789200,
+      "sha256": "39de41fb5fab0af0c0fb7a662f7a0db6cc31dcb22d0790af49876397bf4d0f53"
+    },
+    {
+      "path": "worker/wasm/emfjs.js",
+      "size": 60594,
+      "sha256": "219ea791701fa41464893c30194bf9aee6e3c4f91c3700fde0e67f4764e216bf"
+    },
+    {
+      "path": "worker/wasm/emfjs.wasm",
+      "size": 4667533,
+      "sha256": "321089e2a1b59864581c694d62d4efea921300b59e0b5b7c5b2e1e96c12d6ff0"
+    },
+    {
+      "path": "worker/wasm/omath.js",
+      "size": 91777,
+      "sha256": "5e5215dfb004b7461a1bc0db60a233373d60fa14edd85bb9038d45c996d78492"
+    },
+    {
+      "path": "worker/wasm/omath.wasm",
+      "size": 4467126,
+      "sha256": "a89e4754ef4884e4d0f349edd16b5a00f0b9cc3fb85774a3d19e5842f4b4d56e"
+    },
+    {
+      "path": "worker/wasm/ooxmlcrypt.js",
+      "size": 63025,
+      "sha256": "11e3873758004a457d21b5b663ec80faf070280dff50f416a08876c7a3d51ba9"
+    },
+    {
+      "path": "worker/wasm/ooxmlcrypt.wasm",
+      "size": 1082627,
+      "sha256": "6b7eac291a7378bd4246f5c07b8a823070aebf3c439eb5603724face72137315"
+    },
+    {
+      "path": "worker/wasm/vml2dml.js",
+      "size": 44112,
+      "sha256": "49f632fc5f522ec61e75faa9f84b18b545469158495d52054e55f81dfc0161bb"
+    },
+    {
+      "path": "worker/wasm/vml2dml.wasm",
+      "size": 694737,
+      "sha256": "9fd48d9e8c389bc028a1f42ad5f3f98cf83e526d905f2d4c4360a8ed29fcd2ce"
+    },
+    {
+      "path": "worker/wasm/wordart_generate.js",
+      "size": 50720,
+      "sha256": "58a416d34624701bc41e25043aa942d56c092dd0d3d89cd3ec5bde5b86ab3845"
+    },
+    {
+      "path": "worker/wasm/wordart_generate.wasm",
+      "size": 1111967,
+      "sha256": "d2518e3d669a14eeb9de3f0a2793528383bbca2b96dafdb14ba3ad4d7caa95d6"
+    },
+    {
+      "path": "worker/xsd.zip",
+      "size": 204782,
+      "sha256": "1791d875451a8b990693e48e120940a4eac4510edeac6c58f89435f9e64d81f2"
+    }
+  ]
+}
