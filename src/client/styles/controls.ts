@@ -1,6 +1,6 @@
 /** Shared file identity, ghost actions, and accessible popover menus. */
 export const CONTROL_STYLES = `
-.bamboo-office-artifact-icon {
+.fylar-office-artifact-icon {
   display: grid;
   flex: 0 0 38px;
   width: 38px;
@@ -11,29 +11,29 @@ export const CONTROL_STYLES = `
   color: #1769e0;
 }
 
-.bamboo-office-artifact-icon[data-compact='true'] {
+.fylar-office-artifact-icon[data-compact='true'] {
   flex-basis: 32px;
   width: 32px;
   height: 32px;
   border-radius: 7px;
 }
 
-.bamboo-office-artifact-icon[data-compact='true'] svg {
+.fylar-office-artifact-icon[data-compact='true'] svg {
   width: 19px;
   height: 19px;
 }
 
-.bamboo-office-artifact-icon[data-accent='excel'] {
+.fylar-office-artifact-icon[data-accent='excel'] {
   background: color-mix(in srgb, #178a52 11%, transparent);
   color: #178a52;
 }
 
-.bamboo-office-artifact-icon[data-accent='powerpoint'] {
+.fylar-office-artifact-icon[data-accent='powerpoint'] {
   background: color-mix(in srgb, #d6572a 11%, transparent);
   color: #d6572a;
 }
 
-.bamboo-office-action-menu-wrap {
+.fylar-office-action-menu-wrap {
   position: relative;
   display: flex;
   flex: 0 0 auto;
@@ -41,7 +41,7 @@ export const CONTROL_STYLES = `
   justify-content: center;
 }
 
-.bamboo-office-action-trigger {
+.fylar-office-action-trigger {
   display: inline-flex;
   min-width: 44px;
   height: 44px;
@@ -59,26 +59,26 @@ export const CONTROL_STYLES = `
   cursor: pointer;
 }
 
-.bamboo-office-action-trigger[data-variant='text'] {
+.fylar-office-action-trigger[data-variant='text'] {
   min-width: auto;
   padding-inline: 10px 8px;
 }
 
-.bamboo-office-action-trigger:hover:not(:disabled),
-.bamboo-office-action-trigger[aria-expanded='true'] {
+.fylar-office-action-trigger:hover:not(:disabled),
+.fylar-office-action-trigger[aria-expanded='true'] {
   background: var(--dsw-alias-bg-hover, #f1f3f5);
 }
 
-.bamboo-office-action-trigger:disabled {
+.fylar-office-action-trigger:disabled {
   cursor: not-allowed;
   opacity: 0.45;
 }
 
-.bamboo-office-action-chevron {
+.fylar-office-action-chevron {
   color: var(--dsw-alias-fg-muted, #667085);
 }
 
-.bamboo-office-action-menu {
+.fylar-office-action-menu {
   position: absolute;
   z-index: 40;
   top: calc(100% + 4px);
@@ -96,7 +96,7 @@ export const CONTROL_STYLES = `
   box-shadow: 0 12px 32px color-mix(in srgb, currentColor 15%, transparent);
 }
 
-.bamboo-office-action-menu button {
+.fylar-office-action-menu button {
   display: flex;
   min-height: 44px;
   flex-direction: column;
@@ -113,20 +113,20 @@ export const CONTROL_STYLES = `
   cursor: pointer;
 }
 
-.bamboo-office-action-menu button:hover:not(:disabled) {
+.fylar-office-action-menu button:hover:not(:disabled) {
   background: var(--dsw-alias-bg-hover, #eef1f4);
 }
 
-.bamboo-office-action-menu button:disabled {
+.fylar-office-action-menu button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-.bamboo-office-action-menu button[data-danger='true'] {
+.fylar-office-action-menu button[data-danger='true'] {
   color: var(--dsw-alias-fg-danger, #b42318);
 }
 
-.bamboo-office-action-menu button small {
+.fylar-office-action-menu button small {
   max-width: 240px;
   color: var(--dsw-alias-fg-muted, #667085);
   font-size: 11px;
@@ -135,14 +135,14 @@ export const CONTROL_STYLES = `
   white-space: normal;
 }
 
-.bamboo-office-action-trigger:focus-visible,
-.bamboo-office-action-menu button:focus-visible {
+.fylar-office-action-trigger:focus-visible,
+.fylar-office-action-menu button:focus-visible {
   outline: 2px solid var(--dsw-alias-brand-primary, #1769e0);
   outline-offset: 2px;
 }
 
 @media (max-width: 639px) {
-  .bamboo-office-action-menu {
+  .fylar-office-action-menu {
     max-width: min(260px, calc(100vw - 16px));
   }
 }

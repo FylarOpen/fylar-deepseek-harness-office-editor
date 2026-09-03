@@ -28,7 +28,7 @@ try {
   run(['plugin', '--profile', 'web', 'add', tarball])
   const config = run(['--profile', 'web', '--dump-config'])
   if (!config.includes('dsh-fylar-office-editor')) {
-    throw new Error('DSH composed config does not contain the Bamboo Office bundle and plugin row')
+    throw new Error('DSH composed config does not contain the Fylar Office bundle and plugin row')
   }
   console.log('Verified local tgz install and composed DSH web profile')
 } finally {

@@ -19,7 +19,7 @@ describe('vendored Office SDK integrity', () => {
   })
 
   it('rejects drift in separately packed root legal notices', async () => {
-    const vendorRoot = await mkdtemp(join(tmpdir(), 'bamboo-office-notices-'))
+    const vendorRoot = await mkdtemp(join(tmpdir(), 'fylar-office-notices-'))
     try {
       await mkdir(resolve(vendorRoot, 'lib'))
       for (const path of ['legal.txt', 'THIRD_PARTY_NOTICES']) {

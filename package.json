@@ -1,7 +1,7 @@
 {
   "name": "dsh-fylar-office-editor",
   "version": "0.1.0",
-  "description": "Fylar Office Editor integration for the DeepSeek Harness Web profile, powered by Bamboo Office SDK",
+  "description": "Fylar Office Editor integration for the DeepSeek Harness Web profile, powered by Fylar Office SDK",
   "keywords": [
     "deepseek-harness",
     "dsh",

@@ -3,7 +3,7 @@ import { readFile, realpath, stat } from 'node:fs/promises'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { extname, resolve, sep } from 'node:path'
 
-export const OFFICE_FILE_ROUTE_PREFIX = '/bamboo-office-files'
+export const OFFICE_FILE_ROUTE_PREFIX = '/fylar-office-files'
 export const MAX_OFFICE_FILE_BYTES = 128 * 1024 * 1024
 
 const OFFICE_MIME: Readonly<Record<string, string>> = {

@@ -53,11 +53,11 @@ export function OfficeArtifactRow({ block, toolName, t = zhT }: OfficeArtifactRo
   const label = t(LABEL_KEYS[publishing ? 'present' : 'create'][model.state])
   return (
     <div
-      className="bamboo-office-tool-status"
+      className="fylar-office-tool-status"
       data-state={model.state}
       role="status"
     >
-      <span className="bamboo-office-tool-status-dot" aria-hidden />
+      <span className="fylar-office-tool-status-dot" aria-hidden />
       <span>{label}</span>
       <small title={model.path}>{officeBaseName(model.path)}</small>
     </div>

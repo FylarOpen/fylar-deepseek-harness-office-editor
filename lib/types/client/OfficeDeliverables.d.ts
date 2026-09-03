@@ -9,11 +9,11 @@ import { OFFICE_LOCALE_NS } from './locales.ts';
 export interface OfficeDeliverablesTurnData extends OfficeDeliverablesData {
 }
 /** Conversation Definition kind and the Turn-data key it exclusively owns. */
-export declare const OFFICE_DELIVERABLES_KIND = "bamboo-office-deliverables";
+export declare const OFFICE_DELIVERABLES_KIND = "fylar-office-deliverables";
 declare module '@deepseek-ai/dsh-client-ui-conversation/client' {
     interface ConversationTurnDataMap {
         /** Office files created or published by a dsh-fylar-office-editor Tool in this turn. */
-        'bamboo-office-deliverables': OfficeDeliverablesTurnData;
+        'fylar-office-deliverables': OfficeDeliverablesTurnData;
     }
 }
 interface OfficeDeliverablesState extends OfficeDeliverablesTurnData {

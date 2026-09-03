@@ -125,11 +125,11 @@ export class OfficeWorkspace {
   ) {
     this.environment = environment
     this.root = environment.document.createElement('div')
-    this.root.className = 'bamboo-office-sdk-host'
-    this.root.dataset.bambooOfficeSdkHost = 'true'
+    this.root.className = 'fylar-office-sdk-host'
+    this.root.dataset.fylarOfficeSdkHost = 'true'
     this.parking = environment.document.createElement('div')
     this.parking.hidden = true
-    this.parking.dataset.bambooOfficeParking = 'true'
+    this.parking.dataset.fylarOfficeParking = 'true'
     this.parking.append(this.root)
     ;(environment.document.body ?? environment.document.documentElement).append(this.parking)
     this.observer = environment.createResizeObserver(() => { this.refresh() })

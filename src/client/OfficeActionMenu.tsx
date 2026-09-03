@@ -78,11 +78,11 @@ export function OfficeActionMenu({
   }
 
   return (
-    <div ref={rootRef} className="bamboo-office-action-menu-wrap">
+    <div ref={rootRef} className="fylar-office-action-menu-wrap">
       <button
         ref={triggerRef}
         type="button"
-        className="bamboo-office-action-trigger"
+        className="fylar-office-action-trigger"
         data-variant={variant}
         aria-label={label}
         aria-haspopup="menu"
@@ -94,7 +94,7 @@ export function OfficeActionMenu({
         <MenuIcon icon={icon} />
         {variant === 'text' ? <span>{label}</span> : null}
         {variant === 'text' ? (
-          <svg className="bamboo-office-action-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden>
+          <svg className="fylar-office-action-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden>
             <path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         ) : null}
@@ -103,7 +103,7 @@ export function OfficeActionMenu({
         <div
           ref={menuRef}
           id={menuId}
-          className="bamboo-office-action-menu"
+          className="fylar-office-action-menu"
           role="menu"
           aria-label={label}
           onKeyDown={navigateMenu}

@@ -10,7 +10,7 @@ const client = await readFile(clientPath, 'utf8')
 const host = await readFile(hostPath, 'utf8')
 const manifest = JSON.parse(await readFile(packagePath, 'utf8'))
 const sdkLock = JSON.parse(await readFile(sdkLockPath, 'utf8'))
-const sdkBasePath = `/bamboo-office-sdk/${sdkLock.sdkVersion}-${sdkLock.sourceSha256.slice(0, 12)}`
+const sdkBasePath = `/fylar-office-sdk/${sdkLock.sdkVersion}-${sdkLock.sourceSha256.slice(0, 12)}`
 
 const requiredClientFragments = [
   'window.__ModuleLoader__.load({',
@@ -20,15 +20,15 @@ const requiredClientFragments = [
   sdkBasePath,
   '/preload.js',
   '/UI.js',
-  '/bamboo-office-files',
+  '/fylar-office-files',
   'office_create_docx',
   'office_present_file',
   'tool.call.toolview',
   'conversation.chat.turnTail',
   'conversation.view',
   'id: "office"',
-  'bamboo-office-tool-status',
-  'bamboo-office-editor-inline',
+  'fylar-office-tool-status',
+  'fylar-office-editor-inline',
   '--dsh-conversation-viewport-height',
   '--dsh-conversation-column-width',
   '900px',
@@ -37,7 +37,7 @@ const requiredClientFragments = [
   'scrollIntoView',
   'requestFullscreen',
   'locale.register',
-  'bamboo-office',
+  'fylar-office',
   '全屏编辑',
   'Edit in full screen',
   '在侧边栏打开',
@@ -52,7 +52,7 @@ const requiredClientFragments = [
 for (const fragment of requiredClientFragments) {
   if (!client.includes(fragment)) throw new Error(`Client artifact is missing: ${fragment}`)
 }
-for (const removed of ['shell.overlay', 'bamboo-office-replacement', 'bamboo-office-dialog']) {
+for (const removed of ['shell.overlay', 'fylar-office-replacement', 'fylar-office-dialog']) {
   if (client.includes(removed)) throw new Error(`Removed replacement dialog remains in Client artifact: ${removed}`)
 }
 const platformModules = new Set([
@@ -92,7 +92,7 @@ for (const forbidden of ['office.core.js', 'mountDocxApp.js', 'canvaskit.wasm'])
 if (client.includes('@deepseek-ai/dsh-client-runtime')) {
   throw new Error('Client artifact still references the retired DSH client runtime package')
 }
-for (const fragment of ['register({', '/bamboo-office-sdk', '/bamboo-office-files', 'office_create_docx', 'office_present_file']) {
+for (const fragment of ['register({', '/fylar-office-sdk', '/fylar-office-files', 'office_create_docx', 'office_present_file']) {
   if (!host.includes(fragment)) throw new Error(`Host artifact is missing: ${fragment}`)
 }
 for (const path of [

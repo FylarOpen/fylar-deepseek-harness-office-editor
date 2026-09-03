@@ -15,7 +15,7 @@ describe('DOCX generation', () => {
       '',
       '| 名称 | 数量 |',
       '| --- | --- |',
-      '| Bamboo | 2 |',
+      '| Fylar | 2 |',
     ].join('\n'))
 
     expect(buffer.subarray(0, 2).toString()).toBe('PK')
@@ -24,7 +24,7 @@ describe('DOCX generation', () => {
     const document = strFromU8(files['word/document.xml'] as Uint8Array)
     expect(document).toContain('测试报告')
     expect(document).toContain('自动生成')
-    expect(document).toContain('Bamboo')
+    expect(document).toContain('Fylar')
   })
 
   it('parses inline emphasis and validates the output path', () => {

@@ -4,7 +4,7 @@
 
 [English](./README.md) · 简体中文
 
-`dsh-fylar-office-editor` 将 Office 文档接入 DeepSeek Harness（DSH）Web。插件提供对话交付卡片、Office 工作区页签、右侧栏编辑器和全屏编辑器，底层由 Bamboo Office SDK 驱动。
+`dsh-fylar-office-editor` 将 Office 文档接入 DeepSeek Harness（DSH）Web。插件提供对话交付卡片、Office 工作区页签、右侧栏编辑器和全屏编辑器，底层由 Fylar Office SDK 驱动。
 
 插件可以把 Agent 的 Markdown 回复转换为真实 DOCX，也可以展示由 Python、Shell 或其他工具在当前 DSH 工作区生成的 DOC、DOCX、XLS、XLSX 和 PPTX 文件。
 
@@ -26,7 +26,7 @@
 - Node.js `^22.19.0 || >=24.0.0`。
 - DSH Web profile。
 - 浏览器支持 Worker、SharedWorker、WebAssembly、IndexedDB、Blob 和 ArrayBuffer。
-- 根据所使用的 SDK 版本，具备有效的 Bamboo Office SDK 试用许可或其他授权。
+- 根据所使用的 SDK 版本，具备有效的 Fylar Office SDK 试用许可或其他授权。
 
 ### 1. 从 GitHub 安装
 
@@ -99,7 +99,7 @@ Office 页签也可以选择受支持的本地文件。本地文件打开后保�
 
 ## 编辑与保存
 
-浏览器取得文件 Blob 后，文档渲染和内部编辑状态均由 Bamboo Office SDK 管理。输入内容时不会通过 DSH 文件系统回写原文件。
+浏览器取得文件 Blob 后，文档渲染和内部编辑状态均由 Fylar Office SDK 管理。输入内容时不会通过 DSH 文件系统回写原文件。
 
 - 页面内编辑不会自动覆盖工作区原文件。
 - 使用“导出”下载并保留编辑后的 Office 文档。
@@ -131,8 +131,6 @@ dsh plugin --profile web add \
 dsh web
 ```
 
-如果以前安装过 `dsh-bamboo-office` 或 `@bamboo/dsh-office`，请先按旧名称移除一次，再安装 `dsh-fylar-office-editor`。
-
 ## 当前限制
 
 - 仅验收上述 DSH 版本和 commit。
@@ -144,6 +142,6 @@ dsh web
 
 ## 分发与声明
 
-npm 包元数据仍设置为 `private: true` 和 `UNLICENSED`，本仓库不是 npm registry 发布。本项目包含的 Bamboo Office SDK 是专有软件，受[其许可声明](./vendor/office-sdk/legal.txt)、适用的试用条款以及与版权方签订的其他协议约束。能够访问 GitHub 仓库本身并不代表 SDK 被重新授权。
+npm 包元数据仍设置为 `private: true` 和 `UNLICENSED`，本仓库不是 npm registry 发布。本项目包含的 Fylar Office SDK 是专有软件，受[其许可声明](./vendor/office-sdk/legal.txt)、适用的试用条款以及与版权方签订的其他协议约束。能够访问 GitHub 仓库本身并不代表 SDK 被重新授权。
 
 第三方声明保留在 [THIRD_PARTY_NOTICES](./vendor/office-sdk/THIRD_PARTY_NOTICES)。使用或分发构建包前请阅读 [NOTICE.md](./NOTICE.md)。

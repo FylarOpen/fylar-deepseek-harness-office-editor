@@ -159,30 +159,30 @@ export function OfficeEditorSurface({
   return (
     <section
       ref={surfaceRef}
-      className={`bamboo-office-details bamboo-office-editor-${presentation}`}
+      className={`fylar-office-details fylar-office-editor-${presentation}`}
       data-fullscreen={fullscreen ? 'true' : undefined}
       aria-label={presentation === 'inline' ? t('editor.inlineAria') : t('editor.aria')}
     >
-      <header className="bamboo-office-details-header">
-        <div className="bamboo-office-document-identity">
+      <header className="fylar-office-details-header">
+        <div className="fylar-office-document-identity">
           <OfficeFileIcon descriptor={descriptor} compact />
-          <div className="bamboo-office-details-heading">
+          <div className="fylar-office-details-heading">
             <strong>{fileName}</strong>
-            <span className="bamboo-office-document-meta">
-              <span className="bamboo-office-document-product">{t('document.kind', { product: descriptor.product })}</span>
-              <span className="bamboo-office-document-separator" aria-hidden>·</span>
-              <span className="bamboo-office-mode-badge" data-tone={modeTone} title={modeHelp} aria-label={`${modeLabel}: ${modeHelp}`}>
+            <span className="fylar-office-document-meta">
+              <span className="fylar-office-document-product">{t('document.kind', { product: descriptor.product })}</span>
+              <span className="fylar-office-document-separator" aria-hidden>·</span>
+              <span className="fylar-office-mode-badge" data-tone={modeTone} title={modeHelp} aria-label={`${modeLabel}: ${modeHelp}`}>
                 <span aria-hidden />
                 {modeLabel}
               </span>
             </span>
           </div>
         </div>
-        <div className="bamboo-office-details-header-actions">
+        <div className="fylar-office-details-header-actions">
           <OfficeActionMenu label={exportLabel} icon="export" variant="text" disabled={!ready || busy} items={exportItems} />
           <button
             type="button"
-            className="bamboo-office-details-close"
+            className="fylar-office-details-close"
             disabled={busy || !fullscreenSupported}
             aria-label={fullscreen ? t('action.exitFullscreen') : t('action.fullscreen')}
             title={fullscreenSupported
@@ -201,7 +201,7 @@ export function OfficeEditorSurface({
             )}
           </button>
           {onCollapse === undefined ? null : (
-            <button type="button" className="bamboo-office-details-close" disabled={busy} aria-label={t('action.collapseAria')} onClick={onCollapse}>
+            <button type="button" className="fylar-office-details-close" disabled={busy} aria-label={t('action.collapseAria')} onClick={onCollapse}>
               <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden>
                 <path d="M3.5 10l4.5-4 4.5 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -214,7 +214,7 @@ export function OfficeEditorSurface({
           {directClose ? (
             <button
               type="button"
-              className="bamboo-office-details-close"
+              className="fylar-office-details-close"
               disabled={busy}
               aria-label={t('action.closeDocument')}
               title={t('action.closeDocument')}
@@ -228,7 +228,7 @@ export function OfficeEditorSurface({
         </div>
       </header>
       {issue !== undefined ? (
-        <div className="bamboo-office-details-error" role="alert">
+        <div className="fylar-office-details-error" role="alert">
           <strong>{localizedIssue?.title}</strong>
           <span>{localizedIssue?.detail}</span>
           <div>
@@ -237,10 +237,10 @@ export function OfficeEditorSurface({
           </div>
         </div>
       ) : null}
-      <div className="bamboo-office-details-body">
-        <div ref={viewerRef} className="bamboo-office-details-viewer" />
+      <div className="fylar-office-details-body">
+        <div ref={viewerRef} className="fylar-office-details-viewer" />
         {snapshot.status === 'loading' ? (
-          <div className="bamboo-office-details-loading" role="status">{t('editor.opening', { name: snapshot.label })}</div>
+          <div className="fylar-office-details-loading" role="status">{t('editor.opening', { name: snapshot.label })}</div>
         ) : null}
       </div>
     </section>

@@ -4,7 +4,7 @@
 
 English · [简体中文](./README.zh-CN.md)
 
-`dsh-fylar-office-editor` connects Office documents to the DeepSeek Harness (DSH) Web experience. It adds a single delivery card to the conversation, an Office workspace tab, a side-panel editor, and a fullscreen editor, all powered by the Bamboo Office SDK.
+`dsh-fylar-office-editor` connects Office documents to the DeepSeek Harness (DSH) Web experience. It adds a single delivery card to the conversation, an Office workspace tab, a side-panel editor, and a fullscreen editor, all powered by the Fylar Office SDK.
 
 The plugin can create a real DOCX file from the agent's Markdown response. It can also present existing DOC, DOCX, XLS, XLSX, and PPTX files created by Python, shell commands, or other tools in the current DSH workspace.
 
@@ -26,7 +26,7 @@ The plugin can create a real DOCX file from the agent's Markdown response. It ca
 - Node.js `^22.19.0 || >=24.0.0`.
 - The DSH Web profile.
 - A modern browser with Worker, SharedWorker, WebAssembly, IndexedDB, Blob, and ArrayBuffer support.
-- A valid trial or other authorization for the bundled Bamboo Office SDK, as applicable to your SDK build.
+- A valid trial or other authorization for the bundled Fylar Office SDK, as applicable to your SDK build.
 
 ### 1. Install from GitHub
 
@@ -99,7 +99,7 @@ The Office tab also lets you select a supported local file. Local files remain b
 
 ## Editing and saving
 
-Document rendering and editing are owned by the Bamboo Office SDK after the browser receives the file as a Blob. They do not write through the DSH filesystem while you type.
+Document rendering and editing are owned by the Fylar Office SDK after the browser receives the file as a Blob. They do not write through the DSH filesystem while you type.
 
 - Editing does not automatically overwrite the original workspace file.
 - Use **Export** to download and retain the edited Office document.
@@ -131,8 +131,6 @@ dsh plugin --profile web add \
 dsh web
 ```
 
-If you previously installed `dsh-bamboo-office` or `@bamboo/dsh-office`, remove that old package name once before installing `dsh-fylar-office-editor`.
-
 ## Current limits
 
 - The plugin is validated only against the DSH version and commit listed above.
@@ -144,6 +142,6 @@ If you previously installed `dsh-bamboo-office` or `@bamboo/dsh-office`, remove 
 
 ## Distribution and notices
 
-The npm package metadata remains `private: true` and `UNLICENSED`; this repository is not an npm registry release. The bundled Bamboo Office SDK is proprietary and is governed by [its license notice](./vendor/office-sdk/legal.txt), any applicable trial terms, and any separate agreement with its copyright holder. GitHub access alone does not relicense the SDK.
+The npm package metadata remains `private: true` and `UNLICENSED`; this repository is not an npm registry release. The bundled Fylar Office SDK is proprietary and is governed by [its license notice](./vendor/office-sdk/legal.txt), any applicable trial terms, and any separate agreement with its copyright holder. GitHub access alone does not relicense the SDK.
 
 Third-party notices are preserved in [THIRD_PARTY_NOTICES](./vendor/office-sdk/THIRD_PARTY_NOTICES). See [NOTICE.md](./NOTICE.md) before using or redistributing a packaged build.

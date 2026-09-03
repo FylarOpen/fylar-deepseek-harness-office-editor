@@ -1,4 +1,4 @@
-/** DeepSeek Harness host entry for the Bamboo Office SDK static runtime. */
+/** DeepSeek Harness host entry for the Fylar Office SDK static runtime. */
 import { readFile, realpath, stat } from 'node:fs/promises'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { extname, resolve, sep } from 'node:path'

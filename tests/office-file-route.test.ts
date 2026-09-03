@@ -15,7 +15,7 @@ describe('workspace Office file route', () => {
   let root: string
 
   beforeEach(async () => {
-    root = await mkdtemp(join(tmpdir(), 'bamboo-office-workspace-'))
+    root = await mkdtemp(join(tmpdir(), 'fylar-office-workspace-'))
     await writeFile(join(root, 'report.docx'), new Uint8Array([80, 75, 3, 4]))
     await writeFile(join(root, 'notes.txt'), 'not office')
   })

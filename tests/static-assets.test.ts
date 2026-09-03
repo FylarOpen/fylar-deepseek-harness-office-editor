@@ -16,7 +16,7 @@ describe('Office static asset handler', () => {
   let root: string
 
   beforeEach(async () => {
-    root = await mkdtemp(join(tmpdir(), 'bamboo-office-assets-'))
+    root = await mkdtemp(join(tmpdir(), 'fylar-office-assets-'))
     await mkdir(join(root, 'worker/wasm'), { recursive: true })
     await writeFile(join(root, 'UI.js'), 'export default {}')
     await writeFile(join(root, 'worker/wasm/test.wasm'), new Uint8Array([0, 97, 115, 109]))
@@ -71,7 +71,7 @@ describe('Office static asset handler', () => {
 
   it('rejects methods, wrong versions, missing files, and traversal', async () => {
     expect((await request(assetUrl('UI.js'), 'POST')).status).toBe(405)
-    expect((await request('/bamboo-office-sdk/wrong-build/UI.js')).status).toBe(404)
+    expect((await request('/fylar-office-sdk/wrong-build/UI.js')).status).toBe(404)
     expect((await request(assetUrl('missing.js'))).status).toBe(404)
     expect((await request(assetUrl('%252e%252e/secret'))).status).toBe(404)
     expect((await request(assetUrl('%2e%2e/secret'))).status).toBe(403)

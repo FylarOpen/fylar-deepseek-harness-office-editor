@@ -13,7 +13,7 @@ const revision = lock.sourceSha256.slice(0, 12)
 if (!generated.includes(`OFFICE_SDK_REVISION = ${JSON.stringify(revision)}`)) {
   throw new Error('Generated Office SDK revision constant is stale')
 }
-if (!generated.includes("OFFICE_SDK_ROUTE_PREFIX = '/bamboo-office-sdk'")) {
+if (!generated.includes("OFFICE_SDK_ROUTE_PREFIX = '/fylar-office-sdk'")) {
   throw new Error('Generated Office SDK route prefix is invalid')
 }
 if (!generated.includes('`${OFFICE_SDK_ROUTE_PREFIX}/${OFFICE_SDK_VERSION}-${OFFICE_SDK_REVISION}`')) {

@@ -1,8 +1,8 @@
-/** Plugin-owned copy for every UI element outside the Bamboo Office SDK. */
+/** Plugin-owned copy for every UI element outside the Fylar Office SDK. */
 import type { TranslateNS } from '@deepseek-ai/dsh-client-ui-slots'
 import type { OfficePluginErrorKind } from './office-errors.ts'
 
-export const OFFICE_LOCALE_NS = 'bamboo-office'
+export const OFFICE_LOCALE_NS = 'fylar-office'
 
 export const zh = {
   'view.label': 'Office',
@@ -70,7 +70,7 @@ export const zh = {
   'error.unsupported-file.title': '不支持的文件',
   'error.unsupported-file.detail': '请选择 DOC、DOCX、XLS、XLSX 或 PPTX 文件。',
   'error.unsupported-browser.title': '浏览器能力不可用',
-  'error.unsupported-browser.detail': 'Bamboo Office 需要浏览器支持 Worker、SharedWorker、WebAssembly、IndexedDB、Blob 和 ArrayBuffer。',
+  'error.unsupported-browser.detail': 'Fylar Office 需要浏览器支持 Worker、SharedWorker、WebAssembly、IndexedDB、Blob 和 ArrayBuffer。',
   'error.runtime-load.title': 'Office 运行时加载失败',
   'error.runtime-load.detail': '请重试；如果仍然失败，请检查已安装的 Office SDK 资源。',
   'error.asset.title': 'Office 资源加载失败',
@@ -158,7 +158,7 @@ export const en = {
   'error.unsupported-file.title': 'Unsupported file',
   'error.unsupported-file.detail': 'Choose a DOC, DOCX, XLS, XLSX, or PPTX file.',
   'error.unsupported-browser.title': 'Browser capabilities unavailable',
-  'error.unsupported-browser.detail': 'Bamboo Office requires Worker, SharedWorker, WebAssembly, IndexedDB, Blob, and ArrayBuffer support.',
+  'error.unsupported-browser.detail': 'Fylar Office requires Worker, SharedWorker, WebAssembly, IndexedDB, Blob, and ArrayBuffer support.',
   'error.runtime-load.title': 'Failed to load the Office runtime',
   'error.runtime-load.detail': 'Retry. If it still fails, check the installed Office SDK assets.',
   'error.asset.title': 'Failed to load Office assets',
@@ -179,8 +179,8 @@ export const en = {
 
 declare module '@deepseek-ai/dsh-client-ui-slots' {
   interface LocaleNamespaceMap {
-    /** Copy owned by the Bamboo Office plugin shell. */
-    'bamboo-office': OfficeLocaleKey
+    /** Copy owned by the Fylar Office plugin shell. */
+    'fylar-office': OfficeLocaleKey
   }
 }
 

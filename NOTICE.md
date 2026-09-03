@@ -4,7 +4,7 @@
 plugin. Its npm metadata is `private: true` and `UNLICENSED`; the repository does
 not claim that the combined package is released under an open-source license.
 
-The bundled Bamboo Office SDK is proprietary. Its controlling notice is
+The bundled Fylar Office SDK is proprietary. Its controlling notice is
 `vendor/office-sdk/legal.txt`, together with any applicable trial terms or
 separate written agreement with the copyright holder. Access to this repository
 does not by itself grant permission to use or redistribute the SDK.

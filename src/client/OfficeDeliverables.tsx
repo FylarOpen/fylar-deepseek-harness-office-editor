@@ -21,13 +21,13 @@ import { OFFICE_LOCALE_NS, type OfficeTranslate, zhT } from './locales.ts'
 export interface OfficeDeliverablesTurnData extends OfficeDeliverablesData {}
 
 /** Conversation Definition kind and the Turn-data key it exclusively owns. */
-export const OFFICE_DELIVERABLES_KIND = 'bamboo-office-deliverables'
+export const OFFICE_DELIVERABLES_KIND = 'fylar-office-deliverables'
 const OFFICE_DELIVERY_TOOL_NAMES = new Set(['office_create_docx', 'office_present_file'])
 
 declare module '@deepseek-ai/dsh-client-ui-conversation/client' {
   interface ConversationTurnDataMap {
     /** Office files created or published by a dsh-fylar-office-editor Tool in this turn. */
-    'bamboo-office-deliverables': OfficeDeliverablesTurnData
+    'fylar-office-deliverables': OfficeDeliverablesTurnData
   }
 }
 
@@ -164,10 +164,10 @@ function ArtifactCard({
   }
 
   return (
-    <article className="bamboo-office-artifact-card">
-      <button type="button" className="bamboo-office-artifact-primary" disabled={cwd === undefined || busy} onClick={openInline}>
+    <article className="fylar-office-artifact-card">
+      <button type="button" className="fylar-office-artifact-primary" disabled={cwd === undefined || busy} onClick={openInline}>
         <OfficeFileIcon descriptor={descriptor} />
-        <span className="bamboo-office-artifact-copy">
+        <span className="fylar-office-artifact-copy">
           <strong>{officeBaseName(path)}</strong>
           <span>{status}</span>
           <small>{officeDirectoryLabel(path, t('workspace.root'))}</small>
@@ -194,7 +194,7 @@ export function OfficeDeliverables({
   const workspace = useWorkspace(value => value)
   const session = useOfficeSession(value => value)
   return (
-    <div className="bamboo-office-deliverables" aria-label={t('artifact.group')}>
+    <div className="fylar-office-deliverables" aria-label={t('artifact.group')}>
       {matched.map(path => {
         const target = { path, cwd }
         const current = session.current

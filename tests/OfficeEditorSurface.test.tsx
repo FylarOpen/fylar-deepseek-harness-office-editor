@@ -25,7 +25,7 @@ describe('OfficeEditorSurface inline mode', () => {
         current={{
           source: {
             kind: 'workspace', path: 'inline.docx', cwd: '/workspace', fileName: 'inline.docx',
-            url: '/bamboo-office-files', docType: 1,
+            url: '/fylar-office-files', docType: 1,
           },
           presentation: 'inline',
         }}
@@ -46,7 +46,7 @@ describe('OfficeEditorSurface inline mode', () => {
 
     expect(attach).toHaveBeenCalledOnce()
     expect(scrollIntoView).toHaveBeenCalledWith({ block: 'start', inline: 'nearest', behavior: 'smooth' })
-    expect(document.querySelector('.bamboo-office-details-toolbar')).toBeNull()
+    expect(document.querySelector('.fylar-office-details-toolbar')).toBeNull()
     expect(screen.getByText('临时编辑').getAttribute('title')).toContain('不会覆盖原文件')
     fireEvent.click(screen.getByRole('button', { name: '更多文档操作' }))
     fireEvent.click(screen.getByRole('menuitem', { name: '在侧边栏打开' }))
@@ -81,7 +81,7 @@ describe('OfficeEditorSurface inline mode', () => {
     fireEvent.click(screen.getByRole('button', { name: '导出' }))
     expect(screen.getByRole('menuitem', { name: /下载并保存 XLSX/ })).toBeTruthy()
     expect(screen.getByRole('menuitem', { name: /导出 PDF/ })).toBeTruthy()
-    const viewer = document.querySelector('.bamboo-office-details-viewer')
+    const viewer = document.querySelector('.fylar-office-details-viewer')
     if (viewer === null) throw new Error('viewer missing')
     fireEvent.pointerDown(viewer)
     expect(markPotentialEdits).toHaveBeenCalledOnce()
@@ -108,7 +108,7 @@ describe('OfficeEditorSurface inline mode', () => {
       current: {
         source: {
           kind: 'workspace', path: 'details.docx', cwd: '/workspace', fileName: 'details.docx',
-          url: '/bamboo-office-files', docType: 1,
+          url: '/fylar-office-files', docType: 1,
         },
         presentation: 'details',
       },
@@ -159,7 +159,7 @@ describe('OfficeEditorSurface inline mode', () => {
       current: {
         source: {
           kind: 'workspace', path: 'slides.pptx', cwd: '/workspace', fileName: 'slides.pptx',
-          url: '/bamboo-office-files', docType: 3,
+          url: '/fylar-office-files', docType: 3,
         },
         presentation: 'inline',
       },
@@ -171,10 +171,10 @@ describe('OfficeEditorSurface inline mode', () => {
 
     fireEvent.click(screen.getByRole('button', { name: '全屏编辑' }))
     expect(requestFullscreen).toHaveBeenCalledOnce()
-    expect(document.querySelector('.bamboo-office-details')?.getAttribute('data-fullscreen')).toBe('true')
+    expect(document.querySelector('.fylar-office-details')?.getAttribute('data-fullscreen')).toBe('true')
     fireEvent.click(screen.getByRole('button', { name: '退出全屏编辑' }))
     expect(exitFullscreen).toHaveBeenCalledOnce()
-    expect(document.querySelector('.bamboo-office-details')?.hasAttribute('data-fullscreen')).toBe(false)
+    expect(document.querySelector('.fylar-office-details')?.hasAttribute('data-fullscreen')).toBe(false)
 
     view.unmount()
     Reflect.deleteProperty(Element.prototype, 'requestFullscreen')
@@ -188,7 +188,7 @@ describe('OfficeEditorSurface inline mode', () => {
       current: {
         source: {
           kind: 'workspace', path: 'loading.docx', cwd: '/workspace', fileName: 'loading.docx',
-          url: '/bamboo-office-files', docType: 1,
+          url: '/fylar-office-files', docType: 1,
         },
         presentation: 'inline',
       },

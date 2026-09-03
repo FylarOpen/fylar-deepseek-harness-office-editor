@@ -1,7 +1,7 @@
-/** Plugin-owned copy for every UI element outside the Bamboo Office SDK. */
+/** Plugin-owned copy for every UI element outside the Fylar Office SDK. */
 import type { TranslateNS } from '@deepseek-ai/dsh-client-ui-slots';
 import type { OfficePluginErrorKind } from './office-errors.ts';
-export declare const OFFICE_LOCALE_NS = "bamboo-office";
+export declare const OFFICE_LOCALE_NS = "fylar-office";
 export declare const zh: {
     'view.label': string;
     'document.fallback': string;
@@ -174,8 +174,8 @@ export declare const en: {
 };
 declare module '@deepseek-ai/dsh-client-ui-slots' {
     interface LocaleNamespaceMap {
-        /** Copy owned by the Bamboo Office plugin shell. */
-        'bamboo-office': OfficeLocaleKey;
+        /** Copy owned by the Fylar Office plugin shell. */
+        'fylar-office': OfficeLocaleKey;
     }
 }
 /** Chinese fallback for direct embedding and isolated component tests. */

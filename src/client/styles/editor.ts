@@ -1,6 +1,6 @@
 /** Shared details-column and wide inline editor surfaces. */
 export const EDITOR_STYLES = `
-.bamboo-office-details {
+.fylar-office-details {
   position: relative;
   display: flex;
   height: 100%;
@@ -13,7 +13,7 @@ export const EDITOR_STYLES = `
   color: var(--dsw-alias-fg-default, #1f2328);
 }
 
-.bamboo-office-details:fullscreen {
+.fylar-office-details:fullscreen {
   width: 100%;
   max-width: none;
   height: 100%;
@@ -25,21 +25,21 @@ export const EDITOR_STYLES = `
   box-shadow: none;
 }
 
-.bamboo-office-details:fullscreen::backdrop {
+.fylar-office-details:fullscreen::backdrop {
   background: var(--dsw-alias-bg-base, #fff);
 }
 
-.bamboo-office-details:fullscreen .bamboo-office-details-header {
+.fylar-office-details:fullscreen .fylar-office-details-header {
   border-radius: 0;
 }
 
-.bamboo-office-editor-inline {
-  --bamboo-office-inline-width: min(
+.fylar-office-editor-inline {
+  --fylar-office-inline-width: min(
     900px,
     calc(var(--dsh-conversation-column-width, 964px) - 64px)
   );
 
-  width: var(--bamboo-office-inline-width);
+  width: var(--fylar-office-inline-width);
   max-width: none;
   height: clamp(
     420px,
@@ -52,7 +52,7 @@ export const EDITOR_STYLES = `
   );
   box-sizing: border-box;
   margin: 8px 0 12px;
-  margin-left: calc((100% - var(--bamboo-office-inline-width)) / 2);
+  margin-left: calc((100% - var(--fylar-office-inline-width)) / 2);
   overflow: visible;
   scroll-margin-top: 16px;
   scroll-margin-bottom: calc(var(--dsh-composer-height, 152px) + 16px);
@@ -61,7 +61,7 @@ export const EDITOR_STYLES = `
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
 }
 
-.bamboo-office-details-header {
+.fylar-office-details-header {
   position: relative;
   z-index: 10;
   display: flex;
@@ -74,11 +74,11 @@ export const EDITOR_STYLES = `
   background: var(--dsw-alias-bg-elevated, #fff);
 }
 
-.bamboo-office-editor-inline .bamboo-office-details-header {
+.fylar-office-editor-inline .fylar-office-details-header {
   border-radius: 11px 11px 0 0;
 }
 
-.bamboo-office-document-identity {
+.fylar-office-document-identity {
   display: flex;
   min-width: 0;
   flex: 1;
@@ -86,7 +86,7 @@ export const EDITOR_STYLES = `
   gap: 8px;
 }
 
-.bamboo-office-details-heading {
+.fylar-office-details-heading {
   display: flex;
   min-width: 0;
   flex: 1;
@@ -94,7 +94,7 @@ export const EDITOR_STYLES = `
   gap: 8px;
 }
 
-.bamboo-office-details-heading strong {
+.fylar-office-details-heading strong {
   min-width: 0;
   flex: 1 1 auto;
   overflow: hidden;
@@ -105,7 +105,7 @@ export const EDITOR_STYLES = `
   line-height: 1.25;
 }
 
-.bamboo-office-document-meta {
+.fylar-office-document-meta {
   display: flex;
   min-width: 0;
   flex: 0 1 auto;
@@ -115,12 +115,12 @@ export const EDITOR_STYLES = `
   color: var(--dsw-alias-fg-muted, #667085);
 }
 
-.bamboo-office-document-product,
-.bamboo-office-document-separator {
+.fylar-office-document-product,
+.fylar-office-document-separator {
   flex: 0 0 auto;
 }
 
-.bamboo-office-mode-badge {
+.fylar-office-mode-badge {
   display: inline-flex;
   min-width: 0;
   align-items: center;
@@ -131,7 +131,7 @@ export const EDITOR_STYLES = `
   white-space: nowrap;
 }
 
-.bamboo-office-mode-badge > span {
+.fylar-office-mode-badge > span {
   width: 6px;
   height: 6px;
   flex: 0 0 auto;
@@ -139,19 +139,19 @@ export const EDITOR_STYLES = `
   background: #1769e0;
 }
 
-.bamboo-office-mode-badge[data-tone='dirty'] > span { background: #e78b18; }
-.bamboo-office-mode-badge[data-tone='readonly'] > span { background: #98a2b3; }
-.bamboo-office-mode-badge[data-tone='loading'] > span { background: #1769e0; animation: bamboo-office-pulse 1.2s ease-in-out infinite; }
-.bamboo-office-mode-badge[data-tone='error'] > span { background: #d92d20; }
+.fylar-office-mode-badge[data-tone='dirty'] > span { background: #e78b18; }
+.fylar-office-mode-badge[data-tone='readonly'] > span { background: #98a2b3; }
+.fylar-office-mode-badge[data-tone='loading'] > span { background: #1769e0; animation: fylar-office-pulse 1.2s ease-in-out infinite; }
+.fylar-office-mode-badge[data-tone='error'] > span { background: #d92d20; }
 
-.bamboo-office-details-header-actions {
+.fylar-office-details-header-actions {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
   gap: 4px;
 }
 
-.bamboo-office-details-close {
+.fylar-office-details-close {
   display: inline-flex;
   min-width: 44px;
   height: 44px;
@@ -168,17 +168,17 @@ export const EDITOR_STYLES = `
   cursor: pointer;
 }
 
-.bamboo-office-details-close:hover {
+.fylar-office-details-close:hover {
   background: var(--dsw-alias-bg-hover, #eef1f4);
 }
 
-.bamboo-office-details-close:disabled,
-.bamboo-office-details-error button:disabled {
+.fylar-office-details-close:disabled,
+.fylar-office-details-error button:disabled {
   cursor: not-allowed;
   opacity: 0.45;
 }
 
-.bamboo-office-details-error button {
+.fylar-office-details-error button {
   white-space: nowrap;
   border: 1px solid var(--dsw-alias-border-default, #c8cdd3);
   border-radius: 6px;
@@ -190,7 +190,7 @@ export const EDITOR_STYLES = `
   cursor: pointer;
 }
 
-.bamboo-office-details-body {
+.fylar-office-details-body {
   position: relative;
   z-index: 0;
   min-height: 0;
@@ -198,14 +198,14 @@ export const EDITOR_STYLES = `
   overflow: hidden;
 }
 
-.bamboo-office-details-viewer {
+.fylar-office-details-viewer {
   position: absolute;
   inset: 0;
   min-height: 0;
   overflow: hidden;
 }
 
-.bamboo-office-details-loading {
+.fylar-office-details-loading {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -216,7 +216,7 @@ export const EDITOR_STYLES = `
   font-size: 13px;
 }
 
-.bamboo-office-details-error {
+.fylar-office-details-error {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -227,49 +227,49 @@ export const EDITOR_STYLES = `
   font-size: 12px;
 }
 
-.bamboo-office-details-error div {
+.fylar-office-details-error div {
   display: flex;
   gap: 6px;
   margin-top: 4px;
 }
 
-.bamboo-office-details-error strong,
-.bamboo-office-details-error span {
+.fylar-office-details-error strong,
+.fylar-office-details-error span {
   display: block;
 }
 
-.bamboo-office-details-close:focus-visible,
-.bamboo-office-details-error button:focus-visible {
+.fylar-office-details-close:focus-visible,
+.fylar-office-details-error button:focus-visible {
   outline: 2px solid var(--dsw-alias-brand-primary, #1769e0);
   outline-offset: 2px;
 }
 
 @container (max-width: 720px) {
-  .bamboo-office-document-product,
-  .bamboo-office-document-separator { display: none; }
-  .bamboo-office-details-header { gap: 5px; padding-inline: 7px 5px; }
-  .bamboo-office-document-identity,
-  .bamboo-office-details-heading { gap: 6px; }
+  .fylar-office-document-product,
+  .fylar-office-document-separator { display: none; }
+  .fylar-office-details-header { gap: 5px; padding-inline: 7px 5px; }
+  .fylar-office-document-identity,
+  .fylar-office-details-heading { gap: 6px; }
 }
 
 @container (max-width: 460px) {
-  .bamboo-office-details-header-actions .bamboo-office-action-trigger[data-variant='text'] > span,
-  .bamboo-office-details-header-actions .bamboo-office-action-chevron { display: none; }
-  .bamboo-office-details-header-actions .bamboo-office-action-trigger[data-variant='text'] {
+  .fylar-office-details-header-actions .fylar-office-action-trigger[data-variant='text'] > span,
+  .fylar-office-details-header-actions .fylar-office-action-chevron { display: none; }
+  .fylar-office-details-header-actions .fylar-office-action-trigger[data-variant='text'] {
     min-width: 44px;
     padding-inline: 0;
   }
-  .bamboo-office-details-close span { display: none; }
-  .bamboo-office-details-close { padding-inline: 0; }
+  .fylar-office-details-close span { display: none; }
+  .fylar-office-details-close { padding-inline: 0; }
 }
 
 @container (max-width: 360px) {
-  .bamboo-office-document-meta { display: none; }
-  .bamboo-office-document-identity { gap: 6px; }
+  .fylar-office-document-meta { display: none; }
+  .fylar-office-document-identity { gap: 6px; }
 }
 
 @media (max-width: 1023px) {
-  .bamboo-office-editor-inline {
+  .fylar-office-editor-inline {
     width: 100%;
     height: clamp(
       360px,
@@ -285,7 +285,7 @@ export const EDITOR_STYLES = `
 }
 
 @media (max-width: 639px) {
-  .bamboo-office-editor-inline {
+  .fylar-office-editor-inline {
     width: 100%;
     height: clamp(
       320px,

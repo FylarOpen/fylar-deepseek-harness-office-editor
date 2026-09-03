@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
-export declare const OFFICE_FILE_ROUTE_PREFIX = "/bamboo-office-files";
+export declare const OFFICE_FILE_ROUTE_PREFIX = "/fylar-office-files";
 export declare const MAX_OFFICE_FILE_BYTES: number;
 export interface WorkspacePathRegistry {
     list(): readonly {

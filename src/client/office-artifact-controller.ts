@@ -4,7 +4,7 @@ import { createdFileName, inferOfficeDocType, officeBaseName } from './office-fi
 import type { ObservableSnapshot, OfficeWorkspace } from './office-workspace.ts'
 import type { OfficeDocType } from './office-types.ts'
 
-const OFFICE_FILE_ROUTE_PREFIX = '/bamboo-office-files'
+const OFFICE_FILE_ROUTE_PREFIX = '/fylar-office-files'
 
 export type OfficePresentation = 'inline' | 'details' | 'office-view' | 'parked'
 

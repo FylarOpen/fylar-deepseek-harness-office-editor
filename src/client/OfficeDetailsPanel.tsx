@@ -1,4 +1,4 @@
-/** Bamboo Office editor hosted in DSH's right details column. */
+/** Fylar Office editor hosted in DSH's right details column. */
 import type {} from '@deepseek-ai/dsh-client-ui-layout/client'
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ObservableSnapshot, OfficeWorkspaceActions, OfficeWorkspaceSnapshot } from './office-workspace.ts'

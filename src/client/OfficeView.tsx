@@ -74,32 +74,32 @@ export function OfficeView({
   const issueCopy = issue === undefined ? undefined : officeIssueCopy(t, issue.kind)
   const busy = snapshot.status === 'loading'
   return (
-    <section className="bamboo-office-view" aria-label="Bamboo Office">
+    <section className="fylar-office-view" aria-label="Fylar Office">
       <input ref={inputRef} type="file" accept={OFFICE_FILE_ACCEPT} hidden onChange={onFileChange} />
-      <div className="bamboo-office-empty">
-        <div className="bamboo-office-empty-card">
-          <div className="bamboo-office-brand-mark" aria-hidden>BO</div>
-          <h2>Bamboo Office</h2>
+      <div className="fylar-office-empty">
+        <div className="fylar-office-empty-card">
+          <div className="fylar-office-brand-mark" aria-hidden>FO</div>
+          <h2>Fylar Office</h2>
           <p>{t('empty.description')}</p>
-          <small>Powered by Bamboo Office SDK</small>
-          {busy ? <div className="bamboo-office-empty-status" role="status">{t('empty.loading')}</div> : null}
+          <small>Powered by Fylar Office SDK</small>
+          {busy ? <div className="fylar-office-empty-status" role="status">{t('empty.loading')}</div> : null}
           {issue === undefined ? null : (
-            <div className="bamboo-office-empty-error" role="alert">
+            <div className="fylar-office-empty-error" role="alert">
               <strong>{issueCopy?.title}</strong>
               <span>{issueCopy?.detail}</span>
-              {issue.retryable ? <button className="bamboo-office-button" onClick={() => void retrySession()}>{t('action.retry')}</button> : null}
+              {issue.retryable ? <button className="fylar-office-button" onClick={() => void retrySession()}>{t('action.retry')}</button> : null}
             </div>
           )}
-          <div className="bamboo-office-actions">
-            <button className="bamboo-office-button bamboo-office-button-primary" disabled={busy} onClick={chooseFile}>
+          <div className="fylar-office-actions">
+            <button className="fylar-office-button fylar-office-button-primary" disabled={busy} onClick={chooseFile}>
               {t('empty.openFile')}
             </button>
           </div>
-          <div className="bamboo-office-create-label">{t('empty.newDocument')}</div>
-          <div className="bamboo-office-actions">
-            <button className="bamboo-office-button" disabled={busy} onClick={() => void createDocument(1)}>{t('empty.newWord')}</button>
-            <button className="bamboo-office-button" disabled={busy} onClick={() => void createDocument(2)}>{t('empty.newExcel')}</button>
-            <button className="bamboo-office-button" disabled={busy} onClick={() => void createDocument(3)}>{t('empty.newPowerPoint')}</button>
+          <div className="fylar-office-create-label">{t('empty.newDocument')}</div>
+          <div className="fylar-office-actions">
+            <button className="fylar-office-button" disabled={busy} onClick={() => void createDocument(1)}>{t('empty.newWord')}</button>
+            <button className="fylar-office-button" disabled={busy} onClick={() => void createDocument(2)}>{t('empty.newExcel')}</button>
+            <button className="fylar-office-button" disabled={busy} onClick={() => void createDocument(3)}>{t('empty.newPowerPoint')}</button>
           </div>
         </div>
       </div>
