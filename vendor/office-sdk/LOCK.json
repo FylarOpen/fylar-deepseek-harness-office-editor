@@ -3,7 +3,7 @@
   "sdkName": "@office/office-sdk",
   "sdkVersion": "1.0.0",
   "source": "office-sdk",
-  "sourceSha256": "a1a5a0a5e313ebdc9ce06bbd5c67ae9dbb192d835172714b5acfa14c2dbed3c3",
+  "sourceSha256": "acd589284cb2235a63dacf5157b25aba1d4bb9c1871b734c24354f188ba105af",
   "files": [
     {
       "path": "ApiBase.js",
@@ -72,8 +72,8 @@
     },
     {
       "path": "licenseDefault.js",
-      "size": 118,
-      "sha256": "10ad9bc1f38e26371a05b8172a177328a001bc2330e6af123973ad542bfedfb5"
+      "size": 112,
+      "sha256": "305f7c802ad3f51bf272ba7d2cbae5359edf0672f8c23bf4c2198acb58522990"
     },
     {
       "path": "locale-assets/deploy/i18n/docxLib/en-US/defaultDocx.zip",

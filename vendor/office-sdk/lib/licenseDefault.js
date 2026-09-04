@@ -1,4 +1,4 @@
-const a = "https://licenseopen.nodoc.cn:19000"
+const a = "https://licenseopen.fylar.ai"
 const b = ""
 const c = ""
 const d = ""
