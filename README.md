@@ -18,6 +18,19 @@ The plugin can create a real DOCX file from the agent's Markdown response. It ca
 - **English and Simplified Chinese UI** — the plugin shell follows the DSH locale; the SDK loads its matching language pack.
 - **Workspace-confined file access** — the Host only serves supported files from registered DSH workspace roots and blocks traversal and symlink escapes.
 
+## The Fylar Office SDK
+
+This plugin is powered by the [Fylar Office SDK](https://fylar.ai/) — a fully client-side, serverless Office runtime that brings native Office capabilities to any web application.
+
+- **Web-native and serverless** — no server deployment, third-party conversion tools, or desktop Office suites; files are parsed, rendered, edited, and exported directly in the browser.
+- **Files stay local** — privacy by design: documents are processed on the client without uploading for cloud processing, which means zero infrastructure, lower cost, and offline-ready operation.
+- **No iframe, just a DOM node** — integration is a programmable DOM node instead of an embedded external viewer.
+- **High-fidelity compatibility** — built around the Office (OOXML) specification to preserve layout, formatting, and document behavior, with pixel-perfect rendering wherever possible.
+- **High-performance rendering** — documents open in seconds: first paint in under 500 ms and typical opening in 1–2 s, all processed 100% locally.
+- **Everything is programmable** — all Office capabilities are exposed in an API-first way, and you can use the API to operate the editor as needed.
+
+In this plugin, the SDK runs entirely inside the DSH browser session: after the browser receives a file as a Blob, the SDK owns document rendering and editing (see [Editing and saving](#editing-and-saving)).
+
 ## Get started
 
 ### Requirements
